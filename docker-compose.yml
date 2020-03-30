@@ -11,3 +11,14 @@ services:
             - './conan-backend/src:/conan-backend/src'
         env_file: 
             - './.env'
+        depends_on: 
+            - "conan-mysql"
+    conan-mysql:
+        build:
+            context: './conan-mysql'
+            dockerfile: './Dockerfile'
+        container_name: 'conan-mysql'
+        ports:
+            - ${PORT_MYSQL}:${PORT_MYSQL}
+        env_file:
+            - ".env"
