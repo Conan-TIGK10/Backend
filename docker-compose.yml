@@ -1,0 +1,13 @@
+version: '2.0'
+services: 
+    conan-backend:
+        build:
+            context: './conan-backend'
+            dockerfile: './Dockerfile'
+        container_name: 'conan-backend'
+        ports: 
+            - ${PORT_API}:${PORT_API}
+        volumes: 
+            - './conan-backend/src:/conan-backend/src'
+        env_file: 
+            - './.env'
