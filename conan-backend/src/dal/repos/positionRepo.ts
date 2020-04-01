@@ -1,5 +1,6 @@
 /* NPM */
 import MySQL from '../db'
+import { DALException } from '../DALException'
 
 export const selectAll = async (): Promise<any> => {
 
@@ -8,18 +9,9 @@ export const selectAll = async (): Promise<any> => {
 
     try {
         const response: any = await dbHandler.query(query)
-        return {
-            data: response,
-            error: null
-        }
+        return response
     } catch(e) {
-        return {
-            data: null,
-            error: {
-                message: e.sqlMessage,
-                number: e.errno
-            }
-        }
+        throw new DALException(DALException.errorNumbers.UNKNOWN)
     } finally {
         dbHandler.close()
     }
@@ -27,7 +19,6 @@ export const selectAll = async (): Promise<any> => {
 }
 
 export const insert = async (data: any): Promise<any> => {
-    console.log(data)
     
     const dbHandler = MySQL()
     const query: string = "INSERT INTO `Position` (x, y, read_at, created_at) VALUES (?, ?, ?, NOW())"
@@ -35,19 +26,27 @@ export const insert = async (data: any): Promise<any> => {
     
     try {
         const response: any = await dbHandler.query(query, values)
-        return {
-            data: response,
-            error: null
-        }
+        return response.insertId
     } catch(e) {
-        console.log(e)
-        return {
-            data: null,
-            error: {
-                message: e.sqlMessage,
-                number: e.errno
-            }
+        let errno: number
+        switch (e.errno) {
+            case 1048:
+                errno = DALException.errorNumbers.NULL_ER
+                break
+            case 1265:
+                errno = DALException.errorNumbers.DATATYPE_ER
+                break
+            case 1292:
+                errno = DALException.errorNumbers.DATETIME_FORMAT_ER
+                break
+            default:
+                errno = DALException.errorNumbers.UNKNOWN
+                break;
         }
+
+        throw new DALException(errno)
+    } finally {
+        dbHandler.close()
     }
 
 }
