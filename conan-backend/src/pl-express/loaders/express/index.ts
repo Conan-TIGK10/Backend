@@ -1,7 +1,6 @@
 /* NPM PACKAGES */
 import express from 'express'
 import bodyParser from 'body-parser'
-import { selectAll, insert } from '../../../dal/repos/positionRepo'
 
 /* ROUTERS */
 
