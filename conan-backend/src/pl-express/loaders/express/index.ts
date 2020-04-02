@@ -17,5 +17,5 @@ export default async (app: express.Application) => {
     app.use(bodyParser.json())
     
     /* ROUTER MOUNTS */
-    /* TODO */
+    app.use('/api', require('./routes'))
 }

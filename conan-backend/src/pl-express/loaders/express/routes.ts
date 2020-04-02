@@ -6,6 +6,13 @@
 
 import express from 'express'
 
- const router = express.Router();
+
+const router = express.Router();
+
+//Position middleware (handles positioning)
+router.use("/position", require('./routers/position'))
+
+
+module.exports = router;
 
  
