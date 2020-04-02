@@ -8,6 +8,9 @@ import * as positionManager from "../../../../bl/positionManager";
 
 const router = express.Router()
 
+/*
+ * Posting a GET request to postition will return all recorded positions
+ */
 router.get('/', (request,response) => {
     positionManager.selectAll()
         .then(positionData => {
@@ -24,6 +27,9 @@ router.get('/', (request,response) => {
         })
 });
 
+/*
+ * Posting to position will require a datamodel consisting of x,y & read_at
+ */
 router.post('/', (request,response) => {
     
     var x :any;
