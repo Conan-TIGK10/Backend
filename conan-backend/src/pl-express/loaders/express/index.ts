@@ -1,5 +1,6 @@
 /* NPM PACKAGES */
 import express from 'express'
+import bodyParser from 'body-parser'
 
 /* ROUTERS */
 
@@ -9,6 +10,12 @@ import express from 'express'
     Loads Express.js middlewares
 */
 export default async (app: express.Application) => {
+    
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }))
+    app.use(bodyParser.json())
+    
     /* ROUTER MOUNTS */
     /* TODO */
 }
