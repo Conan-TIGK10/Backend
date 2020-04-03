@@ -11,7 +11,7 @@ const positionArray: any = await selectAll()
 ### Errors
 
 **Possible error types** : 
-* `BLLException`
+* [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
 
 **Possible errno values**:
 * `BLLException.errorNumbers.DATABASE_ER`
@@ -26,7 +26,7 @@ await insert(data)
 ### Errors
 
 **Possible error types** : 
-* `BLLException`
+* [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
 
 **Possible errno values**:
 * `BLLException.errorNumbers.DATABASE_ER`
