@@ -11,9 +11,12 @@ Sends back error message if thrown
 export const selectAll = async () => {
   try {
     const positions = await positionRepo.selectAll();
-    return positions
+    return positions;
   } catch (e) {
-    throw BLLException.errorStrings.DATABASE_ER;
+    throw new BLLException(
+      BLLException.errorNumbers.DATABASE_ER,
+      BLLException.errorStrings.DATABASE_ER
+    );
   }
 };
 
@@ -22,23 +25,21 @@ Validate data and call the insert function in the postitionReop
 Sends back error message if validation error
 */
 export const insert = async (data: any) => {
-
   try {
     validator.xValidator(data.x);
     validator.yValidator(data.y);
-    validator.stringValidator(data.read_at)
+    validator.stringValidator(data.read_at);
 
-    data.x = parseFloat(data.x)
-    data.y = parseFloat(data.y)
+    data.x = parseFloat(data.x);
+    data.y = parseFloat(data.y);
 
     await positionRepo.insert(data);
   } catch (error) {
+    let errMessage: string;
+    let errno: number;
 
-    let errMessage: string
-    let errno: number
-    
-    if(error.name === 'BLLException') {
-      errno = error._errno
+    if (error.name === "BLLException") {
+      errno = error._errno;
       switch (error._errno) {
         case 0:
           errMessage = BLLException.errorStrings.DATABASE_ER;
@@ -53,22 +54,22 @@ export const insert = async (data: any) => {
           errMessage = BLLException.errorStrings.DATABASE_ER;
           break;
       }
-    } else if(error.name === 'DALException') {
-        switch (error._errno) {
-          case DALException.errorNumbers.DATETIME_FORMAT_ER:
-            errMessage = BLLException.errorStrings.DATETIME_ER;
-            errno = BLLException.errorNumbers.DATETIME_ER
-            break;
-          default:
-            errMessage = BLLException.errorStrings.UNKNOWN_ER
-            errno = BLLException.errorNumbers.UNKNOWN_ER
-            break;
-        }
-      } else {
-        errMessage = BLLException.errorStrings.UNKNOWN_ER
-        errno = BLLException.errorNumbers.UNKNOWN_ER
+    } else if (error.name === "DALException") {
+      switch (error._errno) {
+        case DALException.errorNumbers.DATETIME_FORMAT_ER:
+          errMessage = BLLException.errorStrings.DATETIME_ER;
+          errno = BLLException.errorNumbers.DATETIME_ER;
+          break;
+        default:
+          errMessage = BLLException.errorStrings.UNKNOWN_ER;
+          errno = BLLException.errorNumbers.UNKNOWN_ER;
+          break;
       }
-
-      throw new BLLException(errno, errMessage);
+    } else {
+      errMessage = BLLException.errorStrings.UNKNOWN_ER;
+      errno = BLLException.errorNumbers.UNKNOWN_ER;
     }
+
+    throw new BLLException(errno, errMessage);
+  }
 };
