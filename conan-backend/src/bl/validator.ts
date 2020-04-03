@@ -2,27 +2,27 @@ import { BLLException } from "./BLLException";
 
 /*Validate data to be a Number*/
 export const xValidator = (dataX: any) => {
-  if (dataX == typeof Number) {
+  if (!isNaN(dataX)) {
     return true;
   } else {
-    throw BLLException.errorNumbers.NUMBER_ER;
+    throw new BLLException(BLLException.errorNumbers.NUMBER_ER, "X value");
   }
 };
 
 /*Validate data to be a Number*/
 export const yValidator = (dataY: any) => {
-  if (dataY == typeof Number) {
+  if (!isNaN(dataY)) {
     return true;
   } else {
-    throw BLLException.errorNumbers.NUMBER_ER;
+    throw new BLLException(BLLException.errorNumbers.NUMBER_ER, "Y value");
   }
 };
 
 /*Validate data to be a String*/
 export const stringValidator = (dataString: any) => {
-  if (dataString == typeof String) {
+  if ('string' == typeof dataString) {
     return true;
   } else {
-    throw BLLException.errorNumbers.STRING_ER;
+    throw new BLLException(BLLException.errorNumbers.STRING_ER, "Date value");
   }
 };

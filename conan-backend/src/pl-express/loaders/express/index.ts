@@ -1,6 +1,7 @@
 /* NPM PACKAGES */
 import express from 'express'
 import bodyParser from 'body-parser'
+import positionRouter from './routers/position'
 
 /* ROUTERS */
 
@@ -17,5 +18,5 @@ export default async (app: express.Application) => {
     app.use(bodyParser.json())
     
     /* ROUTER MOUNTS */
-    app.use('/api', require('./routes'))
+    app.use('/position', positionRouter)
 }

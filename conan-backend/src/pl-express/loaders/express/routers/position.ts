@@ -11,7 +11,8 @@ const router = express.Router()
 /*
  * Posting a GET request to postition will return all recorded positions
  */
-router.get('/', (request,response) => {
+router.get('/', async (request,response) => {
+
     positionManager.selectAll()
         .then(positionData => {
             response
@@ -30,7 +31,7 @@ router.get('/', (request,response) => {
 /*
  * Posting to position will require a datamodel consisting of x,y & read_at
  */
-router.post('/', (request,response) => {
+router.post('/', async (request,response) => {
     
     var x :any;
     var y :any;
@@ -45,6 +46,8 @@ router.post('/', (request,response) => {
         y,
         read_at
     };
+
+    console.log(data)
     
     positionManager.insert(data)
         .then(()=> {
@@ -60,4 +63,4 @@ router.post('/', (request,response) => {
         }) 
 });
 
-module.exports = router
+export default router

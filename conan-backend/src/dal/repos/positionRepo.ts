@@ -6,12 +6,12 @@ export const selectAll = async (): Promise<any> => {
 
     const dbHandler = MySQL()
     const query = "SELECT * FROM Position"
-
+    
     try {
         const response: any = await dbHandler.query(query)
         return response
     } catch(e) {
-        throw new DALException(DALException.errorNumbers.UNKNOWN)
+        throw new DALException(DALException.errorNumbers.UNKNOWN, 'Unknown error.')
     } finally {
         dbHandler.close()
     }
@@ -29,22 +29,27 @@ export const insert = async (data: any): Promise<any> => {
         return response.insertId
     } catch(e) {
         let errno: number
+        let message: string
         switch (e.errno) {
             case 1048:
                 errno = DALException.errorNumbers.NULL_ER
+                message = 'Invalid null value.'
                 break
             case 1265:
                 errno = DALException.errorNumbers.DATATYPE_ER
+                message = 'Invalid datatype.'
                 break
             case 1292:
                 errno = DALException.errorNumbers.DATETIME_FORMAT_ER
+                message = 'Invalid datetime format.'
                 break
             default:
                 errno = DALException.errorNumbers.UNKNOWN
+                message = 'Unknown error.'
                 break;
         }
 
-        throw new DALException(errno)
+        throw new DALException(errno, message)
     } finally {
         dbHandler.close()
     }

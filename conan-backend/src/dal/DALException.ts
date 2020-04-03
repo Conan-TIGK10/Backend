@@ -10,9 +10,11 @@ export class DALException extends Error {
 
     private _errno: number
 
-    constructor(errno: number) {
+    constructor(errno: number, message: string) {
         super()
         this._errno = errno
+        this.name = "DALException"
+        this.message = message
     }
 
     getErrno = () => {return this._errno}
