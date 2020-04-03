@@ -38,5 +38,5 @@
 ## Usage example ##
 
 ```typescript
-  BLLException(1, "message");
+  throw new BLLException(BLLException.errorNumbers.DATABASE_ER, BLLException.errorStrings.DATABASE_ER)
 ```
