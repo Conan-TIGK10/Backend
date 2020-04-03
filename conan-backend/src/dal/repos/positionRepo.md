@@ -11,7 +11,7 @@ const positionArray: any = await selectAll()
 ### Errors
 
 **Possible error types** : 
-* `DALException`
+* [`DALException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/DALException.md)
 
 **Possible errno values**:
 * `DALException.errorNumbers.UNKNOWN`
@@ -26,10 +26,10 @@ const insertId: number = await insert(data)
 ### Errors
 
 **Possible error types** : 
-* `BLLException`
+* [`DALException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/DALException.md)
 
 **Possible errno values**:
-* `BLLException.errorNumbers.NULL_ER`
-* `BLLException.errorNumbers.DATATYPE_ER`
-* `BLLException.errorNumbers.DATETIME_FORMAT_ER`
-* `BLLException.errorNumbers.UNKNOWN`
+* `DALException.errorNumbers.NULL_ER`
+* `DALException.errorNumbers.DATATYPE_ER`
+* `DALException.errorNumbers.DATETIME_FORMAT_ER`
+* `DALException.errorNumbers.UNKNOWN`
