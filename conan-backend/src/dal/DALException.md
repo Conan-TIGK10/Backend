@@ -27,5 +27,5 @@
 ## Usage example ##
 
 ```typescript
-  throw DALException(DALException.errorNumbers.REF_ER, "message");
+  throw new DALException(DALException.errorNumbers.REF_ER, "message");
 ```
