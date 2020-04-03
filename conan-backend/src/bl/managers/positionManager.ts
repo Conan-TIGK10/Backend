@@ -1,8 +1,8 @@
 /* Import from Data-Access-Layer */
-import * as positionRepo from "../dal/repos/positionRepo";
-import * as validator from "./validator";
-import { BLLException } from "./BLLException";
-import { DALException } from "../dal/DALException";
+import * as positionRepo from "../../dal/repos/positionRepo";
+import * as validator from "../validators/validator";
+import { BLLException } from "../BLLException";
+import { DALException } from "../../dal/DALException";
 
 /*
 Call the select all function in the postitionReop

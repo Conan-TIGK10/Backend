@@ -1,4 +1,4 @@
-import { BLLException } from "./BLLException";
+import { BLLException } from "../BLLException";
 
 /*Validate data to be a Number*/
 export const xValidator = (dataX: any) => {
@@ -20,7 +20,7 @@ export const yValidator = (dataY: any) => {
 
 /*Validate data to be a String*/
 export const stringValidator = (dataString: any) => {
-  if ('string' == typeof dataString) {
+  if ("string" == typeof dataString) {
     return true;
   } else {
     throw new BLLException(BLLException.errorNumbers.STRING_ER, "Date value");
