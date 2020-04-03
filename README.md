@@ -40,7 +40,9 @@
 ### Presentation Layer
 * [Position Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/position.md)
 ### Business Logic Layer
+* [Position Manager](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/managers/positionManager.md)
 ### Data Access Layer
+* [Position Repo](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/repos/positionRepo.md)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
