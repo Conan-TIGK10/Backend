@@ -11,6 +11,7 @@ const router = express.Router();
 
 //Position middleware (handles positioning)
 router.use("/position", require('./routers/position'))
+router.use("/collision", require('./routers/collision'))
 
 
 module.exports = router;
