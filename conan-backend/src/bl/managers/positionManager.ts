@@ -79,11 +79,13 @@ Validate data and call the exists function in the postitionRepo
 Sends back error message if validation error
 */
 
-export const exists = async (id: number) => {
+export const exists = async (id: any) => {
   try {
     validator.numberValidator(id);
 
-    const existing = await positionRepo.exists(parseFloat(id));
+    let positionId: number = id;
+
+    const existing = await positionRepo.exists(positionId);
     return existing;
   } catch (error) {
     if (error._errno == 1) {
