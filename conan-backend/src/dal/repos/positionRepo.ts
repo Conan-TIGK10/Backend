@@ -55,3 +55,27 @@ export const insert = async (data: any): Promise<any> => {
     }
 
 }
+
+export const exists = async (id: number): Promise<boolean | void> => {
+    const dbHandler = MySQL()
+    const query = "SELECT EXISTS (SELECT 1 FROM `Position` WHERE id = ?)"
+    const values = [id]
+
+    try {
+        const response: any = await dbHandler.query(query, values)
+        console.log(response)
+        return Object.values(response[0])[0] === 1 ? true: false
+    } catch(e) {
+        let errno: number
+        let message: string
+        switch (e.errno) {
+            default:
+                errno = DALException.errorNumbers.UNKNOWN
+                message = DALException.errorStrings.UNKNWON
+                break;
+        }
+
+        throw new DALException(errno, message)
+    }
+
+}

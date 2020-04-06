@@ -4,10 +4,10 @@ CREATE TABLE IF NOT EXISTS Position (
     y DOUBLE(9, 6) NOT NULL,
     read_at DATETIME NOT NULL,
     created_at DATETIME
-)
+);
 
 CREATE TABLE IF NOT EXISTS Collision (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     positionId INT NOT NULL,
-    FOREIGN KEY positionId REFERENCES Position(id)
-)
+    FOREIGN KEY (positionId) REFERENCES `Position`(id)
+);

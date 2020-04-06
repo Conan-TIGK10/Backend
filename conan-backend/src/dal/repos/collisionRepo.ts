@@ -2,7 +2,7 @@
 import MySQL from '../db'
 import { DALException } from '../DALException'
 
-export const selectAll = async (): Promise<any> => {
+export const selectAll = async (): Promise<any | void> => {
 
     const dbHandler = MySQL()
     const query = "SELECT * FROM Collision"
@@ -39,6 +39,9 @@ export const insert = async (data: any): Promise<any> => {
                 errno = DALException.errorNumbers.DATATYPE_ER
                 message = DALException.errorStrings.DATATYPE_ER
                 break
+            case 1452:
+                errno = DALException.errorNumbers.FOREIGN_KEY_CONSTRAINT_ER
+                message = DALException.errorStrings.FOREIGN_KEY_CONSTRAINT_ER
             default:
                 errno = DALException.errorNumbers.UNKNOWN
                 message = DALException.errorStrings.UNKNWON
