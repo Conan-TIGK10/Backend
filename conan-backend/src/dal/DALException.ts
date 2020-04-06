@@ -8,6 +8,14 @@ export class DALException extends Error {
         DATATYPE_ER: 4 // MySQL Errno 1265
     }
 
+    static errorStrings = {
+        UNKNWON: "Unknown error.",
+        REF_ER: "Instance is referenced in another table.",
+        NULL_ER: "Value must not be null.",
+        DATETIME_FORMAT_ER: "Date format was invalid.",
+        DATATYPE_ER: "Unknown error."
+      };
+
     private _errno: number
 
     constructor(errno: number, message: string) {

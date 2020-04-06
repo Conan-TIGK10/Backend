@@ -5,7 +5,7 @@ import { DALException } from '../DALException'
 export const selectAll = async (): Promise<any> => {
 
     const dbHandler = MySQL()
-    const query = "SELECT * FROM Position"
+    const query = "SELECT * FROM Collision"
     
     try {
         const response: any = await dbHandler.query(query)
@@ -21,8 +21,8 @@ export const selectAll = async (): Promise<any> => {
 export const insert = async (data: any): Promise<any> => {
     
     const dbHandler = MySQL()
-    const query: string = "INSERT INTO `Position` (x, y, read_at, created_at) VALUES (?, ?, ?, NOW())"
-    const values: any[] = [data.x, data.y, data.read_at]
+    const query: string = "INSERT INTO `Collision` (positionId) VALUES (?)"
+    const values: any[] = [data.positionId]
     
     try {
         const response: any = await dbHandler.query(query, values)
@@ -38,10 +38,6 @@ export const insert = async (data: any): Promise<any> => {
             case 1265:
                 errno = DALException.errorNumbers.DATATYPE_ER
                 message = DALException.errorStrings.DATATYPE_ER
-                break
-            case 1292:
-                errno = DALException.errorNumbers.DATETIME_FORMAT_ER
-                message = DALException.errorStrings.DATETIME_FORMAT_ER
                 break
             default:
                 errno = DALException.errorNumbers.UNKNOWN
