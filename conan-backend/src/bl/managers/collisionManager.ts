@@ -1,16 +1,17 @@
 /* Import from Data-Access-Layer */
-import * as positionRepo from "../../dal/repos/positionRepo";
+import * as collisionRepo from "../../dal/repos/collisionRepo";
 import * as validator from "../validators/validator";
+import * as positionManager from "../managers/positionManager";
 import { BLLException } from "../BLLException";
 import { DALException } from "../../dal/DALException";
 
 /*
-Call the select all function in the postitionRepo
+Call the select all function in the collisionRepo
 Sends back error message if thrown
 */
 export const selectAll = async () => {
   try {
-    const positions = await positionRepo.selectAll();
+    const positions = await collisionRepo.selectAll();
     return positions;
   } catch (error) {
     throw new BLLException(
@@ -21,19 +22,16 @@ export const selectAll = async () => {
 };
 
 /*
-Validate data and call the insert function in the postitionRepo
+Validate data and call the insert function in the collisionRepo
 Sends back error message if validation error
 */
 export const insert = async (data: any) => {
   try {
-    validator.xValidator(data.x);
-    validator.yValidator(data.y);
-    validator.stringValidator(data.read_at);
+    positionManager.exists(data.positionId);
 
-    data.x = parseFloat(data.x);
-    data.y = parseFloat(data.y);
+    data.positionId = parseFloat(data.positionId);
 
-    await positionRepo.insert(data);
+    await collisionRepo.insert(data);
   } catch (error) {
     let errMessage: string;
     let errno: number;
@@ -47,18 +45,15 @@ export const insert = async (data: any) => {
         case 1:
           errMessage = BLLException.errorStrings.NUMBER_ER;
           break;
-        case 2:
-          errMessage = BLLException.errorStrings.STRING_ER;
-          break;
         default:
           errMessage = BLLException.errorStrings.UNKNOWN_ER;
           break;
       }
     } else if (error.name === "DALException") {
       switch (errno) {
-        case DALException.errorNumbers.DATETIME_FORMAT_ER:
-          errMessage = BLLException.errorStrings.DATETIME_ER;
-          errno = BLLException.errorNumbers.DATETIME_ER;
+        case DALException.errorNumbers.FOREIGN_KEY_CONSTRAINT_ER:
+          errMessage = BLLException.errorStrings.NONEXISTING_ER;
+          errno = BLLException.errorNumbers.NONEXISTING_ER;
           break;
         default:
           errMessage = BLLException.errorStrings.UNKNOWN_ER;
@@ -71,31 +66,5 @@ export const insert = async (data: any) => {
     }
 
     throw new BLLException(errno, errMessage);
-  }
-};
-
-/*
-Validate data and call the exists function in the postitionRepo
-Sends back error message if validation error
-*/
-
-export const exists = async (id: number) => {
-  try {
-    validator.numberValidator(id);
-
-    const existing = await positionRepo.exists(parseFloat(id));
-    return existing;
-  } catch (error) {
-    if (error._errno == 1) {
-      throw new BLLException(
-        BLLException.errorNumbers.NUMBER_ER,
-        BLLException.errorStrings.NUMBER_ER
-      );
-    } else {
-      throw new BLLException(
-        BLLException.errorNumbers.DATABASE_ER,
-        BLLException.errorStrings.DATABASE_ER
-      );
-    }
   }
 };

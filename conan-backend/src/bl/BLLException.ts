@@ -4,7 +4,8 @@ export class BLLException extends Error {
     NUMBER_ER: 1, // Not a valid number value
     STRING_ER: 2, // Not a valid string value
     DATETIME_ER: 3, // Not a valid datetime format
-    UNKNOWN_ER: 4 // Error not defined
+    NONEXISTING_ER: 4, // No position existing for that id
+    UNKNOWN_ER: 5, // Error not defined
   };
 
   static errorStrings = {
@@ -12,7 +13,8 @@ export class BLLException extends Error {
     NUMBER_ER: "Value was not a number", // Not a valid number value
     STRING_ER: "Value was not a string", // Not a valid string value
     DATETIME_ER: "Date format was invalid", // Not a valid date format
-    UNKNOWN_ER: "Unknown error" // Error unknown
+    NONEXISTING_ER: "No position at that id", // No position existing for that id
+    UNKNOWN_ER: "Unknown error", // Error unknown
   };
 
   private _errno: number;
