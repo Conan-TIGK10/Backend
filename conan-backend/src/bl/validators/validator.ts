@@ -26,3 +26,11 @@ export const stringValidator = (dataString: any) => {
     throw new BLLException(BLLException.errorNumbers.STRING_ER, "Date value");
   }
 };
+
+export const numberValidator = (data: any) => {
+  if (!isNaN(data)) {
+    return true;
+  } else {
+    throw new BLLException(BLLException.errorNumbers.NUMBER_ER, "Number value");
+  }
+};
