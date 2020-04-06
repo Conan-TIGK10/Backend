@@ -49,8 +49,10 @@ router.post("/", async (request, response) => {
 
   positionManager
     .insert(data)
-    .then(() => {
-      response.status(200).end();
+    .then((positionData) => {
+      response.status(200)
+              .json({positionData: positionData})
+              .end();
     })
     .catch(error => {
       response
