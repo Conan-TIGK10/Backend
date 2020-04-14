@@ -1,6 +1,6 @@
 import { BLLException } from "../BLLException";
 
-/*Validate data to be a Number*/
+/*Validate data to be a number*/
 export const xValidator = (dataX: any) => {
   if (!isNaN(dataX)) {
     return true;
@@ -9,7 +9,7 @@ export const xValidator = (dataX: any) => {
   }
 };
 
-/*Validate data to be a Number*/
+/*Validate data to be a number*/
 export const yValidator = (dataY: any) => {
   if (!isNaN(dataY)) {
     return true;
@@ -18,7 +18,7 @@ export const yValidator = (dataY: any) => {
   }
 };
 
-/*Validate data to be a String*/
+/*Validate data to be a string*/
 export const stringValidator = (dataString: any) => {
   if ("string" == typeof dataString) {
     return true;
@@ -27,6 +27,7 @@ export const stringValidator = (dataString: any) => {
   }
 };
 
+/*Validate data to be a number*/
 export const numberValidator = (data: any) => {
   if (!isNaN(data)) {
     return true;
