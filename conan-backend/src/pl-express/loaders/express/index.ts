@@ -2,6 +2,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import positionRouter from './routers/position'
+import collisionRouter from './routers/collision'
 
 /* ROUTERS */
 
@@ -19,4 +20,5 @@ export default async (app: express.Application) => {
     
     /* ROUTER MOUNTS */
     app.use('/position', positionRouter)
+    app.use('/collision', collisionRouter)
 }
