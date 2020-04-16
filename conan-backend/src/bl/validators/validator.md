@@ -2,52 +2,84 @@
 
 ## const xValidator(dataX: any)
 
-**Description** : Validates if dataX is a number  
+**Description** : Validates if dataX is a number
+
 ### Use:
+
 ```typescript
-  xValidator(dataX);
+xValidator(dataX);
 ```
 
 ### Errors:
 
-**Possible error types** : 
-* [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
+**Possible error types** :
+
+- [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
 
 **Possible error values**:
-* `BLLException.errorNumbers.NUMBER_ER`
-* `BLLEXception.message = "X value"`
+
+- `BLLException.errorNumbers.NUMBER_ER`
+- `BLLEXception.message = "X value"`
 
 ## const yValidator(dataY: any)
 
-**Description** : Validates if dataY is a number  
+**Description** : Validates if dataY is a number
+
 ### Use:
+
 ```typescript
-  yValidator(dataY);
+yValidator(dataY);
 ```
 
 ### Errors:
 
-**Possible error types** : 
-* [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
+**Possible error types** :
+
+- [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
 
 **Possible error values**:
-* `BLLException.errorNumbers.NUMBER_ER`
-* `BLLEXception.message = "Y value"`
+
+- `BLLException.errorNumbers.NUMBER_ER`
+- `BLLEXception.message = "Y value"`
 
 ## const xValidator(dataString: any)
 
-**Description** : Validates if dataString is a string 
+**Description** : Validates if dataString is a string
+
 ### Use:
+
 ```typescript
-  stringValidator(dataString);
+stringValidator(dataString);
 ```
 
 ### Errors:
 
-**Possible error types** : 
-* [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
+**Possible error types** :
+
+- [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
 
 **Possible error values**:
-* `BLLException.errorNumbers.STRING_ER`
-* `BLLEXception.message = "Date value"`
 
+- `BLLException.errorNumbers.STRING_ER`
+- `BLLEXception.message = "Date value"`
+
+## const numberValidator(dataString: any)
+
+**Description** : Validates if dataString is a number
+
+### Use:
+
+```typescript
+numberValidator(dataString);
+```
+
+### Errors:
+
+**Possible error types** :
+
+- [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
+
+**Possible error values**:
+
+- `BLLException.errorNumbers.NUMBER_ER`
+- `BLLEXception.message = "Number value"`

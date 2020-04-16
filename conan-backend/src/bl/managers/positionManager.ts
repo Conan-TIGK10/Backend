@@ -33,7 +33,8 @@ export const insert = async (data: any) => {
     data.x = parseFloat(data.x);
     data.y = parseFloat(data.y);
 
-    await positionRepo.insert(data);
+    let insertId: any = await positionRepo.insert(data);
+    return insertId;
   } catch (error) {
     let errMessage: string;
     let errno: number;
