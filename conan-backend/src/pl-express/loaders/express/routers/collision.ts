@@ -30,20 +30,19 @@ router.get("/", async (request, response) => {
   });
 
 
-  /*
+ /*
  * Posting to position will require a datamodel consisting of id
  */
 router.post("/", async (request, response) => {
  
-    var id: any;
-    id = request.body.id;
+    var positionId: number;
+    positionId = request.body.positionId;
 
   
     var data: any = {
-    id
+      positionId
     };
   
-    console.log(data);
   
     collisionManager
       .insert(data)
