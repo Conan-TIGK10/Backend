@@ -39,6 +39,7 @@
 ## Documentation
 ### Presentation Layer
 * [Position Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/position.md)
+* [Collision Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/collision.md)
 ### Business Logic Layer
 * [Position Manager](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/managers/positionManager.md)
 * [Collision Manager](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/managers/collisionManager.md)
