@@ -1,6 +1,6 @@
-# Position Router
+# Collision Router
 
-## GET `/position`
+## GET `/collision`
 
 **Auth required** : No
 
@@ -12,13 +12,10 @@
 
 ```json
 [
-  {
-    "id": "1",
-    "x": "11.111",
-    "y": "22.222",
-    "read_at": "2020-04-03T14:26:50.000Z",
-    "created_at": "2020-04-03T12:27:12.000Z"
-  }
+    {
+        "id": 1,
+        "positionId": 1
+    }
 ]
 ```
 
@@ -47,20 +44,16 @@
 
 ```json
 {
-    "x": "[double value with dot separation]",
-    "y": "[double value with dot separation]",
-    "read_at": "[datetime in ISO-format]"
+    "positionId": [number required]
 }
 ```
 
 **Data example**
 
 ```json
-{
-    "x": "111.111111",
-    "y": "222.222222",
-    "read_at": "2020-04-03 14:44:10"
-}
+ {
+ 	"positionId": 1
+ }
 ```
 
 ## Success Response
