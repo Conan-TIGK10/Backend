@@ -33,15 +33,18 @@ router.get("/", async (request, response) => {
 router.post("/", async (request, response) => {
   var x: any;
   var y: any;
+  var sessionId: any;
   var read_at: any;
 
   x = request.body.x;
   y = request.body.y;
+  sessionId = request.body.sessionId;
   read_at = request.body.read_at;
 
   var data: any = {
     x,
     y,
+    sessionId,
     read_at
   };
 

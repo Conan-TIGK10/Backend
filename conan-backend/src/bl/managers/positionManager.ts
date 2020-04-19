@@ -1,5 +1,6 @@
 /* Import from Data-Access-Layer */
 import * as positionRepo from "../../dal/repos/positionRepo";
+import * as sessionRepo from '../../dal/repos/sessionRepo'
 import * as validator from "../validators/validator";
 import { BLLException } from "../BLLException";
 import { DALException } from "../../dal/DALException";
@@ -30,6 +31,11 @@ export const insert = async (data: any) => {
     validator.yValidator(data.y);
     validator.stringValidator(data.read_at);
 
+    let sessionExists = await sessionRepo.exists(data.sessionId)
+    if(!sessionExists)
+      throw new BLLException(BLLException.errorNumbers.REFERENCE_ER, BLLException.errorStrings.REFERENCE_ER)
+    validator.numberValidator(data.sessionId)
+
     data.x = parseFloat(data.x);
     data.y = parseFloat(data.y);
 
@@ -51,6 +57,9 @@ export const insert = async (data: any) => {
         case 2:
           errMessage = BLLException.errorStrings.STRING_ER;
           break;
+        case BLLException.errorNumbers.REFERENCE_ER:
+          errMessage = BLLException.errorStrings.REFERENCE_ER
+          break;
         default:
           errMessage = BLLException.errorStrings.UNKNOWN_ER;
           break;
@@ -61,6 +70,9 @@ export const insert = async (data: any) => {
           errMessage = BLLException.errorStrings.DATETIME_ER;
           errno = BLLException.errorNumbers.DATETIME_ER;
           break;
+        case DALException.errorNumbers.FOREIGN_KEY_CONSTRAINT_ER:
+          errMessage = BLLException.errorStrings.REFERENCE_ER
+          errno = BLLException.errorNumbers.REFERENCE_ER
         default:
           errMessage = BLLException.errorStrings.UNKNOWN_ER;
           errno = BLLException.errorNumbers.UNKNOWN_ER;
