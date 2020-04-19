@@ -1,17 +1,17 @@
 /* Import from Data-Access-Layer */
-import * as collisionRepo from "../../dal/repos/collisionRepo";
-import * as positionManager from "../managers/positionManager";
+import * as sessionRepo from "../../dal/repos/sessionRepo";
+import * as validator from "../validators/validator";
 import { BLLException } from "../BLLException";
 import { DALException } from "../../dal/DALException";
 
 /*
-Call the select all function in the collisionRepo
+Call the select all function in the sessionRepo
 Sends back error message if thrown
 */
 export const selectAll = async () => {
   try {
-    const positions = await collisionRepo.selectAll();
-    return positions;
+    const sessions = await sessionRepo.selectAll();
+    return sessions;
   } catch (error) {
     throw new BLLException(
       BLLException.errorNumbers.DATABASE_ER,
@@ -21,16 +21,15 @@ export const selectAll = async () => {
 };
 
 /*
-Validate data and call the insert function in the collisionRepo
+Validate data and call the insert function in the sessionRepo
 Sends back error message if validation error
 */
 export const insert = async (data: any) => {
   try {
-    positionManager.exists(data.positionId);
+    validator.stringValidator(data.name);
+    validator.sizeValidator(data.name);
 
-    data.positionId = parseFloat(data.positionId);
-
-    await collisionRepo.insert(data);
+    await sessionRepo.insert(data);
   } catch (error) {
     let errMessage: string;
     let errno: number;
@@ -41,8 +40,11 @@ export const insert = async (data: any) => {
         case BLLException.errorNumbers.DATABASE_ER:
           errMessage = BLLException.errorStrings.DATABASE_ER;
           break;
-        case BLLException.errorNumbers.NUMBER_ER:
-          errMessage = BLLException.errorStrings.NUMBER_ER;
+        case BLLException.errorNumbers.STRING_ER:
+          errMessage = BLLException.errorStrings.STRING_ER;
+          break;
+        case BLLException.errorNumbers.SIZE_ER:
+          errMessage = BLLException.errorStrings.SIZE_ER;
           break;
         default:
           errMessage = BLLException.errorStrings.UNKNOWN_ER;
