@@ -6,6 +6,7 @@ export class BLLException extends Error {
     DATETIME_ER: 3, // Not a valid datetime format
     NONEXISTING_ER: 4, // No position existing for that id
     UNKNOWN_ER: 5, // Error not defined
+    SIZE_ER: 6, // Size is not in scope
   };
 
   static errorStrings = {
@@ -15,6 +16,7 @@ export class BLLException extends Error {
     DATETIME_ER: "Date format was invalid", // Not a valid date format
     NONEXISTING_ER: "No position at that id", // No position existing for that id
     UNKNOWN_ER: "Unknown error", // Error unknown
+    SIZE_ER: "Wrong size", // Size is not in scope
   };
 
   private _errno: number;

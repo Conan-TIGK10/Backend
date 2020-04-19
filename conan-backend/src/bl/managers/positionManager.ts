@@ -42,13 +42,13 @@ export const insert = async (data: any) => {
 
     if (error.name === "BLLException") {
       switch (errno) {
-        case 0:
+        case BLLException.errorNumbers.DATABASE_ER:
           errMessage = BLLException.errorStrings.DATABASE_ER;
           break;
-        case 1:
+        case BLLException.errorNumbers.NUMBER_ER:
           errMessage = BLLException.errorStrings.NUMBER_ER;
           break;
-        case 2:
+        case BLLException.errorNumbers.STRING_ER:
           errMessage = BLLException.errorStrings.STRING_ER;
           break;
         default:
@@ -89,7 +89,7 @@ export const exists = async (id: any) => {
     const existing = await positionRepo.exists(positionId);
     return existing;
   } catch (error) {
-    if (error._errno == 1) {
+    if (error._errno == BLLException.errorNumbers.NUMBER_ER) {
       throw new BLLException(
         BLLException.errorNumbers.NUMBER_ER,
         BLLException.errorStrings.NUMBER_ER

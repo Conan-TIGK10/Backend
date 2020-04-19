@@ -1,6 +1,6 @@
 /* Import from Data-Access-Layer */
 import * as sessionRepo from "../../dal/repos/sessionRepo";
-import * as positionManager from "../managers/positionManager";
+import * as validator from "../validators/validator";
 import { BLLException } from "../BLLException";
 import { DALException } from "../../dal/DALException";
 
@@ -21,30 +21,13 @@ export const selectAll = async () => {
 };
 
 /*
-Call the select session function in the sessionRepo
-Sends back error message if thrown
-*/
-export const selectSession = async () => {
-  try {
-    const session = await sessionRepo.selectSession();
-    return session;
-  } catch (error) {
-    throw new BLLException(
-      BLLException.errorNumbers.DATABASE_ER,
-      BLLException.errorStrings.DATABASE_ER
-    );
-  }
-};
-
-/*
 Validate data and call the insert function in the sessionRepo
 Sends back error message if validation error
 */
 export const insert = async (data: any) => {
   try {
-    positionManager.exists(data.sessionId);
-
-    data.sessionId = parseFloat(data.sessionId);
+    validator.stringValidator(data.name);
+    validator.sizeValidator(data.name);
 
     await sessionRepo.insert(data);
   } catch (error) {
@@ -54,11 +37,14 @@ export const insert = async (data: any) => {
 
     if (error.name === "BLLException") {
       switch (errno) {
-        case 0:
+        case BLLException.errorNumbers.DATABASE_ER:
           errMessage = BLLException.errorStrings.DATABASE_ER;
           break;
-        case 1:
-          errMessage = BLLException.errorStrings.NUMBER_ER;
+        case BLLException.errorNumbers.STRING_ER:
+          errMessage = BLLException.errorStrings.STRING_ER;
+          break;
+        case BLLException.errorNumbers.SIZE_ER:
+          errMessage = BLLException.errorStrings.SIZE_ER;
           break;
         default:
           errMessage = BLLException.errorStrings.UNKNOWN_ER;

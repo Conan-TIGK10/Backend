@@ -20,7 +20,7 @@ export const yValidator = (dataY: any) => {
 
 /*Validate data to be a string*/
 export const stringValidator = (dataString: any) => {
-  if ("string" == typeof dataString) {
+  if (typeof dataString === "string") {
     return true;
   } else {
     throw new BLLException(BLLException.errorNumbers.STRING_ER, "Date value");
@@ -33,5 +33,18 @@ export const numberValidator = (data: any) => {
     return true;
   } else {
     throw new BLLException(BLLException.errorNumbers.NUMBER_ER, "Number value");
+  }
+};
+
+/*Validate the size of the string*/
+export const sizeValidator = (dataString: any) => {
+  if (2 < dataString.length) {
+    if (dataString.length < 20) {
+      return true;
+    } else {
+      throw new BLLException(BLLException.errorNumbers.SIZE_ER, "Size too big");
+    }
+  } else {
+    throw new BLLException(BLLException.errorNumbers.SIZE_ER, "Size too small");
   }
 };

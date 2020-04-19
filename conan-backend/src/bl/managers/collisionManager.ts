@@ -1,6 +1,5 @@
 /* Import from Data-Access-Layer */
 import * as collisionRepo from "../../dal/repos/collisionRepo";
-import * as validator from "../validators/validator";
 import * as positionManager from "../managers/positionManager";
 import { BLLException } from "../BLLException";
 import { DALException } from "../../dal/DALException";
@@ -39,10 +38,10 @@ export const insert = async (data: any) => {
 
     if (error.name === "BLLException") {
       switch (errno) {
-        case 0:
+        case BLLException.errorNumbers.DATABASE_ER:
           errMessage = BLLException.errorStrings.DATABASE_ER;
           break;
-        case 1:
+        case BLLException.errorNumbers.NUMBER_ER:
           errMessage = BLLException.errorStrings.NUMBER_ER;
           break;
         default:
