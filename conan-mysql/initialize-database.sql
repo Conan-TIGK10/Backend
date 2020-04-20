@@ -1,9 +1,17 @@
+CREATE TABLE IF NOT EXISTS `Session` (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    created_at DATETIME
+);
+
 CREATE TABLE IF NOT EXISTS Position (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    sessionId INT NOT NULL,
     x DOUBLE(9, 6) NOT NULL,
     y DOUBLE(9, 6) NOT NULL,
     read_at DATETIME NOT NULL,
-    created_at DATETIME
+    created_at DATETIME,
+    FOREIGN KEY (sessionId) REFERENCES `Session`(id)
 );
 
 CREATE TABLE IF NOT EXISTS Collision (

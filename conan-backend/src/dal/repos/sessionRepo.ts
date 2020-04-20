@@ -5,7 +5,7 @@ import { DALException } from '../DALException'
 export const selectAll = async (): Promise<any> => {
 
     const dbHandler = MySQL()
-    const query = "SELECT * FROM Position"
+    const query = "SELECT * FROM `Session`"
     
     try {
         const response: any = await dbHandler.query(query)
@@ -21,8 +21,8 @@ export const selectAll = async (): Promise<any> => {
 export const insert = async (data: any): Promise<any> => {
     
     const dbHandler = MySQL()
-    const query: string = "INSERT INTO `Position` (sessionId, x, y, read_at, created_at) VALUES (?, ?, ?, ?, NOW())"
-    const values: any[] = [data.sessionId, data.x, data.y, data.read_at]
+    const query: string = "INSERT INTO `Session` (name, created_at) VALUES (?, NOW())"
+    const values: any[] = [data.name]
     
     try {
         const response: any = await dbHandler.query(query, values)
@@ -39,13 +39,6 @@ export const insert = async (data: any): Promise<any> => {
                 errno = DALException.errorNumbers.DATATYPE_ER
                 message = DALException.errorStrings.DATATYPE_ER
                 break
-            case 1292:
-                errno = DALException.errorNumbers.DATETIME_FORMAT_ER
-                message = DALException.errorStrings.DATETIME_FORMAT_ER
-                break
-            case 1452:
-                errno = DALException.errorNumbers.FOREIGN_KEY_CONSTRAINT_ER
-                message = DALException.errorStrings.FOREIGN_KEY_CONSTRAINT_ER
             default:
                 errno = DALException.errorNumbers.UNKNOWN
                 message = DALException.errorStrings.UNKNWON
@@ -61,7 +54,7 @@ export const insert = async (data: any): Promise<any> => {
 
 export const exists = async (id: number): Promise<boolean | void> => {
     const dbHandler = MySQL()
-    const query = "SELECT EXISTS (SELECT 1 FROM `Position` WHERE id = ?)"
+    const query = "SELECT EXISTS (SELECT 1 FROM `Session` WHERE id = ?)"
     const values = [id]
 
     try {
