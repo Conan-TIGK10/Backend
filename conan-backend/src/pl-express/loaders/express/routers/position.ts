@@ -45,23 +45,8 @@ router.post("/", async (request, response) => {
     x,
     y,
     sessionId,
-    read_at
+    read_at,
   };
-
-  console.log(data);
-
-/* 
-  try {
-    const insertId = await positionManager.insert(data)
-    response.status(200)
-    .json({id: insertId})
-    .end();
-  } catch (error) {
-    response
-    .status(500)
-    .json({ error: error })
-    .end();
-  } */
 
   positionManager
     .insert(data)
