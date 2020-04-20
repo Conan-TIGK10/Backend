@@ -29,7 +29,8 @@ export const insert = async (data: any) => {
     validator.stringValidator(data.name);
     validator.sizeValidator(data.name);
 
-    await sessionRepo.insert(data);
+    let insertId: any = await sessionRepo.insert(data);
+    return insertId;
   } catch (error) {
     let errMessage: string;
     let errno: number;
