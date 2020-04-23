@@ -40,14 +40,18 @@
 ### Presentation Layer
 * [Position Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/position.md)
 * [Collision Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/collision.md)
-* * [Session Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/session.md)
+* [Session Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/session.md)
 ### Business Logic Layer
 * [Position Manager](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/managers/positionManager.md)
 * [Collision Manager](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/managers/collisionManager.md)
+* [Session Manager](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/managers/sessionManager.md)
 * [BLLException](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
+
+
 ### Data Access Layer
 * [Position Repo](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/repos/positionRepo.md)
 * [Collision Repo](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/repos/collisionRepo.md)
+* [Session Repo](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/repos/sessionRepo.md)
 * [DALException](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/DALException.md)
 
 <!-- MARKDOWN LINKS & IMAGES -->
