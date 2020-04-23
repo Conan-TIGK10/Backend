@@ -30,7 +30,8 @@ export const insert = async (data: any) => {
 
     data.positionId = parseFloat(data.positionId);
 
-    await collisionRepo.insert(data);
+    const insertId = await collisionRepo.insert(data);
+    return insertId
   } catch (error) {
     let errMessage: string;
     let errno: number;

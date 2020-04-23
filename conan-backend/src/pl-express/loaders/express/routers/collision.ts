@@ -46,8 +46,11 @@ router.post("/", async (request, response) => {
   
     collisionManager
       .insert(data)
-      .then(() => {
-        response.status(200).end();
+      .then(insertId => {
+        response
+          .status(200)
+          .json({id: insertId})
+          .end();
       })
       .catch(error => {
         response
