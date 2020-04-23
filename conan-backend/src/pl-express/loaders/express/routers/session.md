@@ -61,7 +61,12 @@
 
 **Code** : `200 OK`
 
-**Content** : No
+**Content** : 
+```json
+{
+    "id": [your active session id]
+}
+```
 
 ## Error Response
 
