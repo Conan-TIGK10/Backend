@@ -22,6 +22,9 @@ const run = async () => {
     app.listen(port, () => {
         console.log(`conan-backend is listening on port ${port}`)
     })
+
+    console.log(`conan-backend is listening on port ${port}`)
+
 }
 
 run()

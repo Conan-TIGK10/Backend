@@ -16,6 +16,7 @@
     "id": "1",
     "x": "11.111",
     "y": "22.222",
+    "sessionId": "1",
     "read_at": "2020-04-03T14:26:50.000Z",
     "created_at": "2020-04-03T12:27:12.000Z"
   }
@@ -49,6 +50,7 @@
 {
     "x": "[double value with dot separation]",
     "y": "[double value with dot separation]",
+    "sessionId": "[double value with dot separation]",
     "read_at": "[datetime in ISO-format]"
 }
 ```
@@ -59,6 +61,7 @@
 {
     "x": "111.111111",
     "y": "222.222222",
+    "sessionId": "1",
     "read_at": "2020-04-03 14:44:10"
 }
 ```
