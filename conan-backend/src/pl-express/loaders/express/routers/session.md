@@ -1,6 +1,6 @@
-# Position Router
+# Session Router
 
-## GET `/position`
+## GET `/session`
 
 **Auth required** : No
 
@@ -37,7 +37,7 @@
     }
 }
 ```
-## POST `/position`
+## POST `/session`
 
 **Auth required** : No
 
