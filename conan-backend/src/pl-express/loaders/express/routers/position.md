@@ -70,7 +70,12 @@
 
 **Code** : `200 OK`
 
-**Content** : No
+**Content** :
+```json
+{
+    "id": 1
+}
+```
 
 ## Error Response
 
