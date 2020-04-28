@@ -13,16 +13,13 @@ const router = express.Router();
 router.get("/", async (request, response) => {
   positionManager
     .selectAll()
-    .then(positionData => {
-      response
-        .status(200)
-        .json(positionData)
-        .end();
+    .then((positionData) => {
+      response.status(200).json(positionData).end();
     })
-    .catch(error => {
+    .catch((error) => {
       response
-        .status(500)
-        .json({ error: error })
+        .status(error._errorStatusCode)
+        .json({ error: error.message })
         .end();
     });
 });
@@ -51,14 +48,12 @@ router.post("/", async (request, response) => {
   positionManager
     .insert(data)
     .then((positionData) => {
-      response.status(200)
-              .json({id: positionData})
-              .end();
+      response.status(200).json({ id: positionData }).end();
     })
-    .catch(error => {
+    .catch((error) => {
       response
-        .status(500)
-        .json({ error: error })
+        .status(error._errorStatusCode)
+        .json({ error: error.message })
         .end();
     });
 });

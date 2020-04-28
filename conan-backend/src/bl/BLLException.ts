@@ -18,19 +18,36 @@ export class BLLException extends Error {
     NONEXISTING_ER: "No position at that id", // No position existing for that id
     UNKNOWN_ER: "Unknown error", // Error unknown
     SIZE_ER: "Wrong size", // Size is not in scope
-    REFERENCE_ER: "Reference id (foreign key) does not exist.", // No id matches the reference id provided
+    REFERENCE_ER: "Associated session id does not exist", // No id matches the reference id provided
+  };
+
+  static errorStatusCode = {
+    DATABASE_ER: 500, // Error in the database
+    NUMBER_ER: 422, // Not a valid number value
+    STRING_ER: 422, // Not a valid string value
+    DATETIME_ER: 422, // Not a valid date format
+    NONEXISTING_ER: 400, // No position existing for that id
+    UNKNOWN_ER: 500, // Error unknown
+    SIZE_ER: 400, // Size is not in scope
+    REFERENCE_ER: 400, // No id matches the reference id provided
   };
 
   private _errno: number;
+  private _errorStatusCode: number;
 
-  constructor(errno: number, message: string) {
+  constructor(errno: number, message: string, errorStatusCode: number) {
     super();
     this._errno = errno;
     this.name = "BLLException";
     this.message = message;
+    this._errorStatusCode = errorStatusCode;
   }
 
   getErrno = () => {
     return this._errno;
+  };
+
+  getErrorStatusCode = () => {
+    return this._errorStatusCode;
   };
 }

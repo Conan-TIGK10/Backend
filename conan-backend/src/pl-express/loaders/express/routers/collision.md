@@ -12,10 +12,10 @@
 
 ```json
 [
-    {
-        "id": 1,
-        "positionId": 1
-    }
+  {
+    "id": 1,
+    "positionId": 1
+  }
 ]
 ```
 
@@ -29,14 +29,15 @@
 
 ```json
 {
-    "error": {
-      "_errno":"errorNumber",
-      "message":"errorMessage",
-      "name": "nameOfException"
-    }
+  "error": {
+    "_errno": "errorNumber",
+    "message": "errorMessage",
+    "name": "nameOfException"
+  }
 }
 ```
-## POST `/position`
+
+## POST `/collision`
 
 **Auth required** : No
 
@@ -51,9 +52,9 @@
 **Data example**
 
 ```json
- {
- 	"positionId": 1
- }
+{
+  "positionId": 1
+}
 ```
 
 ## Success Response
@@ -72,10 +73,10 @@
 
 ```json
 {
-    "error": {
-      "_errno":"errorNumber",
-      "message":"errorMessage",
-      "name": "nameOfException"
-    }
+  "error": {
+    "_errno": "errorNumber",
+    "message": "errorMessage",
+    "name": "nameOfException"
+  }
 }
 ```

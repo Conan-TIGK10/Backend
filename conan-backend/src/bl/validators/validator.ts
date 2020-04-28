@@ -5,7 +5,11 @@ export const xValidator = (dataX: any) => {
   if (!isNaN(dataX)) {
     return true;
   } else {
-    throw new BLLException(BLLException.errorNumbers.NUMBER_ER, "X value");
+    throw new BLLException(
+      BLLException.errorNumbers.NUMBER_ER,
+      "X value",
+      BLLException.errorStatusCode.NUMBER_ER
+    );
   }
 };
 
@@ -14,7 +18,11 @@ export const yValidator = (dataY: any) => {
   if (!isNaN(dataY)) {
     return true;
   } else {
-    throw new BLLException(BLLException.errorNumbers.NUMBER_ER, "Y value");
+    throw new BLLException(
+      BLLException.errorNumbers.NUMBER_ER,
+      "Y value",
+      BLLException.errorStatusCode.NUMBER_ER
+    );
   }
 };
 
@@ -23,7 +31,11 @@ export const stringValidator = (dataString: any) => {
   if (typeof dataString === "string") {
     return true;
   } else {
-    throw new BLLException(BLLException.errorNumbers.STRING_ER, "Date value");
+    throw new BLLException(
+      BLLException.errorNumbers.STRING_ER,
+      "Date value",
+      BLLException.errorStatusCode.STRING_ER
+    );
   }
 };
 
@@ -32,7 +44,11 @@ export const numberValidator = (data: any) => {
   if (!isNaN(data)) {
     return true;
   } else {
-    throw new BLLException(BLLException.errorNumbers.NUMBER_ER, "Number value");
+    throw new BLLException(
+      BLLException.errorNumbers.NUMBER_ER,
+      "Number value",
+      BLLException.errorStatusCode.NUMBER_ER
+    );
   }
 };
 
@@ -42,9 +58,17 @@ export const sizeValidator = (dataString: any) => {
     if (dataString.length < 20) {
       return true;
     } else {
-      throw new BLLException(BLLException.errorNumbers.SIZE_ER, "Size too big");
+      throw new BLLException(
+        BLLException.errorNumbers.SIZE_ER,
+        "Size too big",
+        BLLException.errorStatusCode.SIZE_ER
+      );
     }
   } else {
-    throw new BLLException(BLLException.errorNumbers.SIZE_ER, "Size too small");
+    throw new BLLException(
+      BLLException.errorNumbers.SIZE_ER,
+      "Size too small",
+      BLLException.errorStatusCode.SIZE_ER
+    );
   }
 };
