@@ -22,3 +22,17 @@ services:
             - ${PORT_MYSQL}:${PORT_MYSQL}
         env_file:
             - ".env"
+    conan-web:
+        build: 
+            context: './conan-web'
+            dockerfile: './Dockerfile'
+        container_name: 'conan-web'
+        ports:
+            - ${PORT_WEB}:${PORT_WEB}
+        volumes:
+            - './conan-web/src/express:/conan-web/src/express'
+            - './conan-web/src/public:/conan-web/dist/public'
+        env_file:
+            - ".env"
+        depends_on: 
+            - "conan-backend"
