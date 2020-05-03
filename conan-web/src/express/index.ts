@@ -10,7 +10,7 @@ import express from "express"
 const run = async () => {
   const app: express.Application = express()
 
-  app.use(express.static('./dist/public'))
+  app.use(express.static('./dist/public/build'))
 
   const appName: string | undefined = process.env.APP_NAME
   app.get('/', (req, res) => {
@@ -19,7 +19,6 @@ const run = async () => {
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>${appName}</title>
-                <script src="/bundle.js" defer></script>
             </head>
             <body>
                 <div id="root"></div>

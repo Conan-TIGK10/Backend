@@ -31,7 +31,7 @@ services:
             - ${PORT_WEB}:${PORT_WEB}
         volumes:
             - './conan-web/src/express:/conan-web/src/express'
-            - './conan-web/src/public:/conan-web/dist/public'
+            - './conan-react/build:/conan-web/dist/public/build'
         env_file:
             - ".env"
         depends_on: 
