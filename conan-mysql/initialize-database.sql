@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS Position (
     y DOUBLE(9, 6) NOT NULL,
     read_at DATETIME NOT NULL,
     created_at DATETIME,
+    rotation INT NOT NULL,
     FOREIGN KEY (sessionId) REFERENCES `Session`(id)
 );
 

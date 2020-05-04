@@ -23,8 +23,14 @@ export const selectAll = async (): Promise<any> => {
 export const insert = async (data: any): Promise<any> => {
   const dbHandler = MySQL();
   const query: string =
-    "INSERT INTO `Position` (sessionId, x, y, read_at, created_at) VALUES (?, ?, ?, ?, NOW())";
-  const values: any[] = [data.sessionId, data.x, data.y, data.read_at];
+    "INSERT INTO `Position` (sessionId, x, y, read_at, created_at, rotation) VALUES (?, ?, ?, ?, NOW(), ?)";
+  const values: any[] = [
+    data.sessionId,
+    data.x,
+    data.y,
+    data.read_at,
+    data.rotation,
+  ];
 
   try {
     const response: any = await dbHandler.query(query, values);

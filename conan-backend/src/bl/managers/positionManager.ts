@@ -32,6 +32,7 @@ export const insert = async (data: any) => {
   try {
     validator.xValidator(data.x);
     validator.yValidator(data.y);
+    validator.numberValidator(data.rotation);
     validator.stringValidator(data.read_at);
 
     let sessionExists = await sessionRepo.exists(data.sessionId);
@@ -45,6 +46,7 @@ export const insert = async (data: any) => {
 
     data.x = parseFloat(data.x);
     data.y = parseFloat(data.y);
+    data.rotation = parseInt(data.rotation);
 
     let insertId: any = await positionRepo.insert(data);
     return insertId;
