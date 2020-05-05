@@ -12,14 +12,15 @@
 
 ```json
 [
-  {
-    "id": "1",
-    "x": "11.111",
-    "y": "22.222",
-    "sessionId": "1",
-    "read_at": "2020-04-03T14:26:50.000Z",
-    "created_at": "2020-04-03T12:27:12.000Z"
-  }
+   {
+        "id": 1,
+        "sessionId": 1,
+        "x": 111.111111,
+        "y": 222.222222,
+        "read_at": "2020-04-03T14:44:10.000Z",
+        "created_at": "2020-05-05T07:50:49.000Z",
+        "rotation": 50
+    }
 ]
 ```
 
@@ -50,7 +51,8 @@
 {
     "x": "[double value with dot separation]",
     "y": "[double value with dot separation]",
-    "sessionId": "[double value with dot separation]",
+    "sessionId": "[int value]",
+    "rotation": "[int value]
     "read_at": "[datetime in ISO-format]"
 }
 ```
@@ -62,6 +64,7 @@
     "x": "111.111111",
     "y": "222.222222",
     "sessionId": "1",
+    "rotation": "50",
     "read_at": "2020-04-03 14:44:10"
 }
 ```
