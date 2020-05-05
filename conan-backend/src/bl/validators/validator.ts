@@ -8,7 +8,7 @@ export const xValidator = (dataX: any) => {
     throw new BLLException(
       BLLException.errorNumbers.NUMBER_ER,
       "X value",
-      BLLException.errorStatusCode.NUMBER_ER
+      BLLException.errorStatusCodes.NUMBER_ER
     );
   }
 };
@@ -21,7 +21,7 @@ export const yValidator = (dataY: any) => {
     throw new BLLException(
       BLLException.errorNumbers.NUMBER_ER,
       "Y value",
-      BLLException.errorStatusCode.NUMBER_ER
+      BLLException.errorStatusCodes.NUMBER_ER
     );
   }
 };
@@ -34,7 +34,7 @@ export const stringValidator = (dataString: any) => {
     throw new BLLException(
       BLLException.errorNumbers.STRING_ER,
       "Date value",
-      BLLException.errorStatusCode.STRING_ER
+      BLLException.errorStatusCodes.STRING_ER
     );
   }
 };
@@ -47,7 +47,7 @@ export const numberValidator = (data: any) => {
     throw new BLLException(
       BLLException.errorNumbers.NUMBER_ER,
       "Number value",
-      BLLException.errorStatusCode.NUMBER_ER
+      BLLException.errorStatusCodes.NUMBER_ER
     );
   }
 };
@@ -61,14 +61,14 @@ export const sizeValidator = (dataString: any) => {
       throw new BLLException(
         BLLException.errorNumbers.SIZE_ER,
         "Size too big",
-        BLLException.errorStatusCode.SIZE_ER
+        BLLException.errorStatusCodes.SIZE_ER
       );
     }
   } else {
     throw new BLLException(
       BLLException.errorNumbers.SIZE_ER,
       "Size too small",
-      BLLException.errorStatusCode.SIZE_ER
+      BLLException.errorStatusCodes.SIZE_ER
     );
   }
 };

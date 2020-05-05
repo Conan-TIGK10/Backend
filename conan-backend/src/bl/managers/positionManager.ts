@@ -19,7 +19,7 @@ export const selectAll = async () => {
     throw new BLLException(
       BLLException.errorNumbers.DATABASE_ER,
       BLLException.errorStrings.DATABASE_ER,
-      BLLException.errorStatusCode.DATABASE_ER
+      BLLException.errorStatusCodes.DATABASE_ER
     );
   }
 };
@@ -40,7 +40,7 @@ export const insert = async (data: any) => {
       throw new BLLException(
         BLLException.errorNumbers.REFERENCE_ER,
         BLLException.errorStrings.REFERENCE_ER,
-        BLLException.errorStatusCode.REFERENCE_ER
+        BLLException.errorStatusCodes.REFERENCE_ER
       );
     validator.numberValidator(data.sessionId);
 
@@ -72,13 +72,13 @@ export const exists = async (id: any) => {
       throw new BLLException(
         BLLException.errorNumbers.NUMBER_ER,
         BLLException.errorStrings.NUMBER_ER,
-        BLLException.errorStatusCode.NUMBER_ER
+        BLLException.errorStatusCodes.NUMBER_ER
       );
     } else {
       throw new BLLException(
         BLLException.errorNumbers.DATABASE_ER,
         BLLException.errorStrings.DATABASE_ER,
-        BLLException.errorStatusCode.DATABASE_ER
+        BLLException.errorStatusCodes.DATABASE_ER
       );
     }
   }

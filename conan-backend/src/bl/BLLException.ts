@@ -21,7 +21,7 @@ export class BLLException extends Error {
     REFERENCE_ER: "Associated session id does not exist", // No id matches the reference id provided
   };
 
-  static errorStatusCode = {
+  static errorStatusCodes = {
     DATABASE_ER: 500, // Error in the database
     NUMBER_ER: 422, // Not a valid number value
     STRING_ER: 422, // Not a valid string value
