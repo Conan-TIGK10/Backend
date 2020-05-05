@@ -19,7 +19,8 @@ xValidator(dataX);
 **Possible error values**:
 
 - `BLLException.errorNumbers.NUMBER_ER`
-- `BLLEXception.message = "X value"`
+- `BLLException.message = "X value"`
+- `BLLException.errorStatusCodes.NUMBER_ER`
 
 ## const yValidator(dataY: any)
 
@@ -41,6 +42,7 @@ yValidator(dataY);
 
 - `BLLException.errorNumbers.NUMBER_ER`
 - `BLLEXception.message = "Y value"`
+- `BLLException.errorStatusCodes.NUMBER_ER`
 
 ## const xValidator(dataString: any)
 
@@ -62,6 +64,7 @@ stringValidator(dataString);
 
 - `BLLException.errorNumbers.STRING_ER`
 - `BLLEXception.message = "Date value"`
+- `BLLException.errorStatusCodes.STRING_ER`
 
 ## const numberValidator(data: any)
 
@@ -83,6 +86,7 @@ numberValidator(dataString);
 
 - `BLLException.errorNumbers.NUMBER_ER`
 - `BLLEXception.message = "Number value"`
+- `BLLException.errorStatusCodes.NUMBER_ER`
 
 ## const sizeValidator(dataString: any)
 
