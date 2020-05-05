@@ -63,7 +63,7 @@ stringValidator(dataString);
 - `BLLException.errorNumbers.STRING_ER`
 - `BLLEXception.message = "Date value"`
 
-## const numberValidator(dataString: any)
+## const numberValidator(data: any)
 
 **Description** : Validates if dataString is a number
 
@@ -83,3 +83,26 @@ numberValidator(dataString);
 
 - `BLLException.errorNumbers.NUMBER_ER`
 - `BLLEXception.message = "Number value"`
+
+## const sizeValidator(dataString: any)
+
+**Description** : Validates if dataString is between 2 and 20 in size
+
+### Use:
+
+```typescript
+sizeValidator(dataString);
+```
+
+### Errors:
+
+**Possible error types** :
+
+- [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
+
+**Possible error values**:
+
+- `BLLException.errorNumbers.SIZE_ER`
+- `BLLEXception.message = "Size too big"`
+- `BLLEXception.message = "Size too small"`
+- `BLLException.errorStatusCodes.SIZE_ER`
