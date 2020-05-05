@@ -60,7 +60,7 @@
 **Content** : 
 ```json
 {
-    "id": [activeSessionId]
+    "id": "[activeSessionId]"
 }
 ```
 
