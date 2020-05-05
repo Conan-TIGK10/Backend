@@ -29,11 +29,7 @@
 
 ```json
 {
-  "error": {
-    "_errno": "errorNumber",
-    "message": "errorMessage",
-    "name": "nameOfException"
-  }
+    "error": "errorMessage"
 }
 ```
 
@@ -73,10 +69,6 @@
 
 ```json
 {
-  "error": {
-    "_errno": "errorNumber",
-    "message": "errorMessage",
-    "name": "nameOfException"
-  }
+    "error": "errorMessage"
 }
 ```
