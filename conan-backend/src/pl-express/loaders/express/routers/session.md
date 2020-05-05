@@ -30,11 +30,7 @@
 
 ```json
 {
-    "error": {
-      "_errno":"errorNumber",
-      "message":"errorMessage",
-      "name": "nameOfException"
-    }
+    "error": "errorMessage"
 }
 ```
 ## POST `/session`
@@ -78,10 +74,6 @@
 
 ```json
 {
-    "error": {
-      "_errno":"errorNumber",
-      "message":"errorMessage",
-      "name": "nameOfException"
-    }
+    "error": "errorMessage"
 }
 ```
