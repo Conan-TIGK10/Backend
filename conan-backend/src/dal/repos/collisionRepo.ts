@@ -8,8 +8,8 @@ export const selectAll = async (): Promise<any | void> => {
   const query = "SELECT * FROM Collision";
 
   try {
-    const response: any = await dbHandler.query(query);
-    return response;
+    const response = await dbHandler.query(query);
+    return response
   } catch (e) {
     throw new DALException(
       DALException.errorNumbers.UNKNOWN,

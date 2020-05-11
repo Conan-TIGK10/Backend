@@ -53,5 +53,7 @@ export const exists = async (id: number): Promise<boolean | void> => {
     return Object.values(response[0])[0] === 1 ? true : false;
   } catch (e) {
     throw errorHandler(e.errno);
+  } finally {
+    dbHandler.close()
   }
 };
