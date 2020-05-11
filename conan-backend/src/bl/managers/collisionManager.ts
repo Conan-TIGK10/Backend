@@ -37,6 +37,7 @@ export const insert = async (data: any) => {
 
     return insertId;
   } catch (error) {
+    console.log(error)
     throw errorHandler(error);
   }
 };

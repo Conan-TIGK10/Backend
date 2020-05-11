@@ -51,6 +51,7 @@ export const insert = async (data: any) => {
     let insertId: any = await positionRepo.insert(data);
     return insertId;
   } catch (error) {
+    console.log(error)
     throw errorHandler(error);
   }
 };

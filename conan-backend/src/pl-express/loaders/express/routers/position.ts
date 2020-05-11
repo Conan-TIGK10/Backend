@@ -54,6 +54,7 @@ router.post("/", async (request, response) => {
       response.status(200).json({ id: positionData }).end();
     })
     .catch((error) => {
+      console.log(error)
       response
         .status(error._errorStatusCode)
         .json({ error: error.message })
