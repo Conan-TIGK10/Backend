@@ -17,9 +17,9 @@
         "sessionId": 1,
         "x": 111.111111,
         "y": 222.222222,
+        "rotation": 50,
         "read_at": "2020-04-03T14:44:10.000Z",
-        "created_at": "2020-05-05T07:50:49.000Z",
-        "rotation": 50
+        "created_at": "2020-05-05T07:50:49.000Z"    
     }
 ]
 ```
@@ -48,7 +48,7 @@
     "x": "[double value with dot separation]",
     "y": "[double value with dot separation]",
     "sessionId": "[int value]",
-    "rotation": "[int value]
+    "rotation": "[int value],
     "read_at": "[datetime in ISO-format]"
 }
 ```
