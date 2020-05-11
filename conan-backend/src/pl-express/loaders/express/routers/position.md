@@ -12,14 +12,15 @@
 
 ```json
 [
-  {
-    "id": "1",
-    "x": "11.111",
-    "y": "22.222",
-    "sessionId": "1",
-    "read_at": "2020-04-03T14:26:50.000Z",
-    "created_at": "2020-04-03T12:27:12.000Z"
-  }
+   {
+        "id": 1,
+        "sessionId": 1,
+        "x": 111.111111,
+        "y": 222.222222,
+        "rotation": 50,
+        "read_at": 60000,
+        "created_at": "2020-05-05T07:50:49.000Z"    
+    }
 ]
 ```
 
@@ -33,11 +34,7 @@
 
 ```json
 {
-    "error": {
-      "_errno":"errorNumber",
-      "message":"errorMessage",
-      "name": "nameOfException"
-    }
+    "error": "errorMessage"
 }
 ```
 ## POST `/position`
@@ -50,8 +47,9 @@
 {
     "x": "[double value with dot separation]",
     "y": "[double value with dot separation]",
-    "sessionId": "[double value with dot separation]",
-    "read_at": "[datetime in ISO-format]"
+    "sessionId": "[int value]",
+    "rotation": "[int value]",
+    "read_at": "[int value (miliseconds)]"
 }
 ```
 
@@ -62,7 +60,8 @@
     "x": "111.111111",
     "y": "222.222222",
     "sessionId": "1",
-    "read_at": "2020-04-03 14:44:10"
+    "rotation": "50",
+    "read_at": "60000"
 }
 ```
 
@@ -87,10 +86,6 @@
 
 ```json
 {
-    "error": {
-      "_errno":"errorNumber",
-      "message":"errorMessage",
-      "name": "nameOfException"
-    }
+    "error": "errorMessage"
 }
 ```

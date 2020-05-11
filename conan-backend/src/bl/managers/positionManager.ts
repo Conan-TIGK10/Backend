@@ -19,7 +19,7 @@ export const selectAll = async () => {
     throw new BLLException(
       BLLException.errorNumbers.DATABASE_ER,
       BLLException.errorStrings.DATABASE_ER,
-      BLLException.errorStatusCode.DATABASE_ER
+      BLLException.errorStatusCodes.DATABASE_ER
     );
   }
 };
@@ -32,23 +32,26 @@ export const insert = async (data: any) => {
   try {
     validator.xValidator(data.x);
     validator.yValidator(data.y);
-    validator.stringValidator(data.read_at);
+    validator.numberValidator(data.rotation);
+    validator.numberValidator(data.read_at);
 
     let sessionExists = await sessionRepo.exists(data.sessionId);
     if (!sessionExists)
       throw new BLLException(
         BLLException.errorNumbers.REFERENCE_ER,
         BLLException.errorStrings.REFERENCE_ER,
-        BLLException.errorStatusCode.REFERENCE_ER
+        BLLException.errorStatusCodes.REFERENCE_ER
       );
     validator.numberValidator(data.sessionId);
 
     data.x = parseFloat(data.x);
     data.y = parseFloat(data.y);
+    data.rotation = parseInt(data.rotation);
 
     let insertId: any = await positionRepo.insert(data);
     return insertId;
   } catch (error) {
+    console.log(error)
     throw errorHandler(error);
   }
 };
@@ -70,13 +73,13 @@ export const exists = async (id: any) => {
       throw new BLLException(
         BLLException.errorNumbers.NUMBER_ER,
         BLLException.errorStrings.NUMBER_ER,
-        BLLException.errorStatusCode.NUMBER_ER
+        BLLException.errorStatusCodes.NUMBER_ER
       );
     } else {
       throw new BLLException(
         BLLException.errorNumbers.DATABASE_ER,
         BLLException.errorStrings.DATABASE_ER,
-        BLLException.errorStatusCode.DATABASE_ER
+        BLLException.errorStatusCodes.DATABASE_ER
       );
     }
   }

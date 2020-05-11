@@ -20,6 +20,14 @@ const sessionArray: any = await selectAll();
 
 - `BLLException.errorNumbers.DATABASE_ER`
 
+**Possible errorStrings values**:
+
+- `BLLException.errorStrings.DATABASE_ER`
+
+**Possible errorStatusCodes values**:
+
+- `BLLException.errorStatusCodes.DATABASE_ER`
+
 ## `async insert(): Promise<any>`
 
 **Description** : Validates and inserts a session instance.
@@ -43,3 +51,19 @@ await insert(data);
 - `BLLException.errorNumbers.SIZE_ER`
 - `BLLException.errorNumbers.UNKNOWN_ER`
 - `BLLException.errorNumbers.NONEXISTING_ER`
+
+**Possible errorStrings values**:
+
+- `BLLException.errorStrings.DATABASE_ER`
+- `BLLException.errorStrings.STRING_ER`
+- `BLLException.errorStrings.SIZE_ER`
+- `BLLException.errorStrings.UNKNOWN_ER`
+- `BLLException.errorStrings.NONEXISTING_ER`
+
+**Possible errorStatusCodes values**:
+
+- `BLLException.errorStatusCodes.DATABASE_ER`
+- `BLLException.errorStatusCodes.STRING_ER`
+- `BLLException.errorStatusCodes.SIZE_ER`
+- `BLLException.errorStatusCodes.UNKNOWN_ER`
+- `BLLException.errorStatusCodes.NONEXISTING_ER`

@@ -29,10 +29,13 @@ router.get("/", async (request, response) => {
  */
 router.post("/", async (request, response) => {
   var positionId: number;
+  var sessionId: number;
   positionId = request.body.positionId;
+  sessionId = request.body.sessionId;
 
   var data: any = {
     positionId,
+    sessionId
   };
 
   collisionManager
@@ -41,6 +44,7 @@ router.post("/", async (request, response) => {
       response.status(200).json({ id: insertId }).end();
     })
     .catch((error) => {
+      console.log(error)
       response
         .status(error._errorStatusCode)
         .json({ error: error.message })

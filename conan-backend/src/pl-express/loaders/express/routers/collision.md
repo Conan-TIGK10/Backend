@@ -14,6 +14,7 @@
 [
   {
     "id": 1,
+    "sessionId": 1,
     "positionId": 1
   }
 ]
@@ -29,11 +30,7 @@
 
 ```json
 {
-  "error": {
-    "_errno": "errorNumber",
-    "message": "errorMessage",
-    "name": "nameOfException"
-  }
+    "error": "errorMessage"
 }
 ```
 
@@ -45,7 +42,8 @@
 
 ```json
 {
-    "positionId": [number required]
+    "sessionId": "[number required]",
+    "positionId": "[number required]"
 }
 ```
 
@@ -53,6 +51,7 @@
 
 ```json
 {
+  "sessionId": 1,
   "positionId": 1
 }
 ```
@@ -73,10 +72,6 @@
 
 ```json
 {
-  "error": {
-    "_errno": "errorNumber",
-    "message": "errorMessage",
-    "name": "nameOfException"
-  }
+    "error": "errorMessage"
 }
 ```

@@ -2,7 +2,7 @@
 
 ## `async selectAll(): Promise<any>`
 
-**Description** : Selects all collisions anstances and return them in an array.
+**Description** : Selects all collisions instances and return them in an array.
 
 ### Use:
 
@@ -19,6 +19,14 @@ const collisionArray: any = await selectAll();
 **Possible errno values**:
 
 - `BLLException.errorNumbers.DATABASE_ER`
+
+**Possible errorStrings values**:
+
+- `BLLException.errorStrings.DATABASE_ER`
+
+**Possible errorStatusCodes values**:
+
+- `BLLException.errorStatusCodes.DATABASE_ER`
 
 ## `async insert(): Promise<any>`
 
@@ -42,3 +50,18 @@ await insert(data);
 - `BLLException.errorNumbers.NUMBER_ER`
 - `BLLException.errorNumbers.UNKNOWN_ER`
 - `BLLException.errorNumbers.NONEXISTING_ER`
+
+
+**Possible errorStrings values**:
+
+- `BLLException.errorStrings.DATABASE_ER`
+- `BLLException.errorStrings.NUMBER_ER`
+- `BLLException.errorStrings.UNKNOWN_ER`
+- `BLLException.errorStrings.NONEXISTING_ER`
+
+**Possible errorStatusCodes values**:
+
+- `BLLException.errorStatusCodes.DATABASE_ER`
+- `BLLException.errorStatusCodes.NUMBER_ER`
+- `BLLException.errorStatusCodes.UNKNOWN_ER`
+- `BLLException.errorStatusCodes.NONEXISTING_ER`

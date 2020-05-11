@@ -18,7 +18,7 @@ export const selectAll = async () => {
     throw new BLLException(
       BLLException.errorNumbers.DATABASE_ER,
       BLLException.errorStrings.DATABASE_ER,
-      BLLException.errorStatusCode.DATABASE_ER
+      BLLException.errorStatusCodes.DATABASE_ER
     );
   }
 };

@@ -18,7 +18,7 @@ export const selectAll = async () => {
     throw new BLLException(
       BLLException.errorNumbers.DATABASE_ER,
       BLLException.errorStrings.DATABASE_ER,
-      BLLException.errorStatusCode.DATABASE_ER
+      BLLException.errorStatusCodes.DATABASE_ER
     );
   }
 };
@@ -31,12 +31,14 @@ export const insert = async (data: any) => {
   try {
     await positionManager.exists(data.positionId);
 
-    data.positionId = parseFloat(data.positionId);
+    data.sessionid = parseInt(data.sessionId)
+    data.positionId = parseInt(data.positionId);
 
     const insertId = await collisionRepo.insert(data);
 
     return insertId;
   } catch (error) {
+    console.log(error)
     throw errorHandler(error);
   }
 };
