@@ -18,7 +18,7 @@ const CONNECTION_HANDLER = () => {
             .apply( CONNECTION , args )
     },
     close() {
-        return Util.promisify( CONNECTION.end ).call( CONNECTION )
+        return Util.promisify( CONNECTION.destroy ).call( CONNECTION )
     }
   }
 }
