@@ -36,6 +36,7 @@ export const insert = async (data: any): Promise<any> => {
     const response: any = await dbHandler.query(query, values);
     return response.insertId;
   } catch (e) {
+    console.log(e)
     throw errorHandler(e.errno);
   } finally {
     dbHandler.close();
