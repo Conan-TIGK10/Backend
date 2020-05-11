@@ -33,7 +33,7 @@ export const insert = async (data: any) => {
     validator.xValidator(data.x);
     validator.yValidator(data.y);
     validator.numberValidator(data.rotation);
-    validator.stringValidator(data.read_at);
+    validator.numberValidator(data.read_at);
 
     let sessionExists = await sessionRepo.exists(data.sessionId);
     if (!sessionExists)
