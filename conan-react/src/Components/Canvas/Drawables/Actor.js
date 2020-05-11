@@ -12,10 +12,9 @@ class Actor {
         let nextPosIndex = null;
         let toX = this.startX
         let toY = this.startY
-
         for (let i = 0; i < this.transforms.length - 1; i++) {
             
-            if(i === this.transforms.length - 1) {
+            if(i === this.transforms.length - 1 || time === 0) {
                 lastPosIndex = i
                 nextPosIndex = i
                 break

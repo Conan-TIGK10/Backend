@@ -2,7 +2,6 @@ import React from 'react';
 import SessionView from './Components/SessionView/SessionView'
 
 import ReactLoading from 'react-loading'
-import dummySessions from './DummySessions'
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 
@@ -10,18 +9,36 @@ function App() {
 
   const [state, setState] = React.useState({
     sessions: [],
+    activeSessionIndex: 0,
     isFetching: true,
   })
 
   React.useEffect(_ => {
-    setTimeout(_ => {
-      setState({ ...state, sessions: dummySessions, isFetching: false })
-    }, 3000)
+    fetchSessions()
   }, [])
+
+  const fetchSessions = async _ => {
+    const url = 'http://3.122.218.59/api/session'
+    const reqConfig = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    try {
+
+      const response = await fetch(url, reqConfig)
+      const data = await response.json()
+      setState({...state, sessions: data, isFetching: false })
+    
+    } catch(e) {
+      console.log(e)
+    }
+  }
 
   const renderSessionView = _ => {
     return (
-      <SessionView session={state.sessions[0]}/>
+      <SessionView session={state.sessions[state.activeSessionIndex]}/>
     )
   }
 
@@ -34,7 +51,7 @@ function App() {
   }
 
   const onClickDropdown = e => {
-    console.log(e.target.id)
+    setState({...state, activeSessionIndex: e.target.id})
   }
 
   return (

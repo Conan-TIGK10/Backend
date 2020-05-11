@@ -20,6 +20,24 @@ export const selectAll = async (): Promise<any> => {
   }
 };
 
+export const selectBySessionId = async (sessionId: number): Promise<any> => {
+  const dbHandler = MySQL()
+  const query = "SELECT * FROM Position WHERE sessionId=?"
+  const values = [sessionId]
+
+  try {
+    const response: any = await dbHandler.query(query, values)
+    return response
+  } catch (e) {
+    throw new DALException(
+      DALException.errorNumbers.UNKNOWN,
+      DALException.errorStrings.UNKNOWN
+    );
+  } finally {
+    dbHandler.close();
+  }
+}
+
 export const insert = async (data: any): Promise<any> => {
   const dbHandler = MySQL();
   const query: string =

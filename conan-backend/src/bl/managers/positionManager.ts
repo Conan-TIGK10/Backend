@@ -24,6 +24,19 @@ export const selectAll = async () => {
   }
 };
 
+export const selectAllBySessionId = async (sessionId: any) => {
+  try {
+    const positions = await positionRepo.selectBySessionId(sessionId)
+    return positions
+  } catch (error) {
+    throw new BLLException(
+      BLLException.errorNumbers.DATABASE_ER,
+      BLLException.errorStrings.DATABASE_ER,
+      BLLException.errorStatusCodes.DATABASE_ER
+    );
+  }
+}
+
 /*
 Validate data and call the insert function in the postitionRepo
 Sends back error message if validation error

@@ -35,7 +35,7 @@ const Navbar = props => {
                             {
                                 props.dropdownItems.map((item, index) => {
                                     return (
-                                        <DropdownItem id={item.id} key={index} onClick={props.onClickDropdown}>{item.name}</DropdownItem>
+                                        <DropdownItem id={index} key={index} onClick={props.onClickDropdown}>{item.name}</DropdownItem>
                                     )
                                 })
                             }

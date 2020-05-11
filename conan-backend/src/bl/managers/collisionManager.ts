@@ -12,8 +12,8 @@ Sends back error message if thrown
 */
 export const selectAll = async () => {
   try {
-    const positions = await collisionRepo.selectAll();
-    return positions;
+    const collisions = await collisionRepo.selectAll();
+    return collisions;
   } catch (error) {
     throw new BLLException(
       BLLException.errorNumbers.DATABASE_ER,
@@ -22,6 +22,19 @@ export const selectAll = async () => {
     );
   }
 };
+
+export const selectAllBySessionId = async (sessionId: any) => {
+  try {
+    const collisions = await collisionRepo.selectBySessionId(sessionId)
+    return collisions
+  } catch (error) {
+    throw new BLLException(
+      BLLException.errorNumbers.DATABASE_ER,
+      BLLException.errorStrings.DATABASE_ER,
+      BLLException.errorStatusCodes.DATABASE_ER
+    );
+  }
+}
 
 /*
 Validate data and call the insert function in the collisionRepo
