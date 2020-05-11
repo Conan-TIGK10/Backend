@@ -48,7 +48,7 @@
     "x": "[double value with dot separation]",
     "y": "[double value with dot separation]",
     "sessionId": "[int value]",
-    "rotation": "[int value],
+    "rotation": "[int value]",
     "read_at": "[datetime in ISO-format]"
 }
 ```
