@@ -55,5 +55,7 @@ export const exists = async (id: number): Promise<boolean | void> => {
     }
 
     throw new DALException(errno, message);
+  } finally {
+    dbHandler.close()
   }
 };
