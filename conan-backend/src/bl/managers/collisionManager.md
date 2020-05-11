@@ -2,7 +2,7 @@
 
 ## `async selectAll(): Promise<any>`
 
-**Description** : Selects all collisions anstances and return them in an array.
+**Description** : Selects all collisions instances and return them in an array.
 
 ### Use:
 

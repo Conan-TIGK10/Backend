@@ -29,10 +29,13 @@ router.get("/", async (request, response) => {
  */
 router.post("/", async (request, response) => {
   var positionId: number;
+  var sessionId: number;
   positionId = request.body.positionId;
+  sessionId = request.body.sessionId;
 
   var data: any = {
     positionId,
+    sessionId
   };
 
   collisionManager

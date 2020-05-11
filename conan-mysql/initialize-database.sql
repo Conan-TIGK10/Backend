@@ -9,14 +9,16 @@ CREATE TABLE IF NOT EXISTS Position (
     sessionId INT NOT NULL,
     x DOUBLE(12, 6) NOT NULL,
     y DOUBLE(12, 6) NOT NULL,
-    read_at INT NOT NULL,
+    read_at INT UNSIGNED NOT NULL,
     created_at DATETIME,
-    rotation INT UNSIGNED NOT NULL,
+    rotation INT NOT NULL,
     FOREIGN KEY (sessionId) REFERENCES `Session`(id)
 );
 
 CREATE TABLE IF NOT EXISTS Collision (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    positionId INT NOT NULL,
-    FOREIGN KEY (positionId) REFERENCES `Position`(id)
+    sessionId INT NOT NULL,
+    positionId INT NOT NULL UNIQUE,
+    FOREIGN KEY (positionId) REFERENCES `Position`(id),
+    FOREIGN KEY (sessionId) REFERENCES `Session`(id)
 );

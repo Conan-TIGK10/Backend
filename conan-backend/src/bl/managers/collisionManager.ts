@@ -31,7 +31,8 @@ export const insert = async (data: any) => {
   try {
     await positionManager.exists(data.positionId);
 
-    data.positionId = parseFloat(data.positionId);
+    data.sessionid = parseInt(data.sessionId)
+    data.positionId = parseInt(data.positionId);
 
     const insertId = await collisionRepo.insert(data);
 

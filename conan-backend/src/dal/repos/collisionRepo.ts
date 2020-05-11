@@ -22,8 +22,8 @@ export const selectAll = async (): Promise<any | void> => {
 
 export const insert = async (data: any): Promise<any> => {
   const dbHandler = MySQL();
-  const query: string = "INSERT INTO `Collision` (positionId) VALUES (?)";
-  const values: any[] = [data.positionId];
+  const query: string = "INSERT INTO `Collision` (sessionId, positionId) VALUES (?, ?)";
+  const values: any[] = [data.sessionId, data.positionId];
 
   try {
     const response: any = await dbHandler.query(query, values);

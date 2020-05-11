@@ -14,6 +14,7 @@
 [
   {
     "id": 1,
+    "sessionId": 1,
     "positionId": 1
   }
 ]
@@ -41,6 +42,7 @@
 
 ```json
 {
+    "sessionId": "[number required]",
     "positionId": "[number required]"
 }
 ```
@@ -49,6 +51,7 @@
 
 ```json
 {
+  "sessionId": 1,
   "positionId": 1
 }
 ```
