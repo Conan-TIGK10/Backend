@@ -1,0 +1,21 @@
+.SessionViewRoot {
+    display: flex;
+    flex-grow: 1;
+}
+
+.SessionInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 40%;
+}
+
+.SessionSmallInfo {
+    font-size: 1.5em;
+}
+
+.SessionVisualisation {
+    display: flex;
+    flex-grow: 2
+}

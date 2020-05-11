@@ -4,9 +4,27 @@ class Surface {
         this.height = props.height ? props.height : 0
         this.scale = props.scale ? props.scale : 1
         this.color = props.color ? props.color : "black"
+        this.scalingTime = 500
+        this.scalingDivider = 4
+        this.scalingTimeElapsed = null
+        this.scalingTimeStart = null
+        this.isScaling = false
     }
     
-    draw = ctx => {
+    draw = (ctx, time) => {
+        if(this.isScaling) {
+            if(this.scalingTimeElapsed >= this.scalingTime) {
+                this.isScaling = false
+                this.scalingTimeStart = null
+                this.scalingTimeElapsed = null
+            }
+            else {
+                this.scalingTimeElapsed = time - this.scalingTimeStart
+                let scalingRatio = this.scalingTime / this.scalingTimeElapsed
+                this.scale -= this.scale/this.scalingDivider*scalingRatio
+            }
+        }
+
         ctx.fillStyle = this.color
         ctx.fillRect(0,0, this.width, this.height)
     }
@@ -33,6 +51,11 @@ class Surface {
         const rightIsInside = right <= this.width
 
         return (topIsInside && leftIsInside && bottomIsInside && rightIsInside)
+    }
+
+    startScaleDown = time => {
+        this.isScaling = true
+        this.scalingTimeStart = time
     }
 }
 

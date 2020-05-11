@@ -2,17 +2,23 @@ import React from 'react'
 import Surface from './Drawables/Surface'
 import './Canvas.css'
 import Path from './Drawables/Path'
+import Actor from './Drawables/Actor'
 
 const Canvas = props => {
 
     const surface = new Surface({
-        color: '#343A40'
+        color: '#343A40',
+        scale: 100
     })
 
     const path = new Path({
         color: 'white',
-        scale: 100,
-        positions: props.session
+        positions: props.positions,
+    })
+
+    const actor = new Actor({
+        color: 'green',
+        transforms: props.positions
     })
 
     const rootRef = React.useRef(null)
@@ -35,9 +41,11 @@ const Canvas = props => {
         surface.setHeight(size)
         path.setStart(surface.getCenter().x, surface.getCenter().y)
         path.setSurface(surface)
+        actor.setStart(surface.getCenter().x, surface.getCenter().y)
+        actor.setSurface(surface)
         surface.draw(ctx.current)
         return () => cancelAnimationFrame(requestRef.current)
-    }, [])
+    })
 
     const calculateCanvasSize = _ => {
         const rootWidth = rootRef.current.offsetWidth
@@ -64,8 +72,9 @@ const Canvas = props => {
 
     const animate = time => {
         calculateTime(time)
-        surface.draw(ctx.current)
+        surface.draw(ctx.current, animationTimeRef.current.elapsed)
         path.draw(ctx.current, animationTimeRef.current.elapsed)
+        actor.draw(ctx.current, animationTimeRef.current.elapsed)
         requestRef.current = requestAnimationFrame(animate)
     }
 

@@ -1,27 +1,16 @@
 import React from 'react';
-import Content from './Components/Content/Content'
-import Canvas from './Components/Canvas/Canvas'
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Nav,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap'
+import SessionView from './Components/SessionView/SessionView'
+
 import ReactLoading from 'react-loading'
 import dummySessions from './DummySessions'
 import './App.css';
+import Navbar from './Components/Navbar/Navbar';
 
 function App() {
 
   const [state, setState] = React.useState({
     sessions: [],
     isFetching: true,
-    navbarIsOpen: false,
-    dropDownIsOpen: false
   })
 
   React.useEffect(_ => {
@@ -30,11 +19,9 @@ function App() {
     }, 3000)
   }, [])
 
-  const renderContent = _ => {
+  const renderSessionView = _ => {
     return (
-      <Content>
-        <Canvas session={state.sessions[0].positions}/>
-      </Content>
+      <SessionView session={state.sessions[0]}/>
     )
   }
 
@@ -46,40 +33,14 @@ function App() {
     )
   }
 
-  const renderNavbar = _ => {
-    return (
-      <div className={"NavbarRoot"}>
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand>Path Visualization</NavbarBrand>
-          <NavbarToggler onClick={toggleNavbar} />
-          <Nav className={'mr-auto'} navbar>
-            <Dropdown disabled={state.isFetching} nav isOpen={state.dropDownIsOpen} toggle={toggleDropdown}>
-              <DropdownToggle nav caret>
-                Sessions
-              </DropdownToggle>
-              <DropdownMenu>
-                {
-                  state.sessions.map((session, index) => {
-                    return(
-                      <DropdownItem key={index}>{session.name}</DropdownItem>
-                    )
-                  })
-                }
-              </DropdownMenu>
-            </Dropdown>
-          </Nav>
-        </Navbar>
-      </div>
-    )
+  const onClickDropdown = e => {
+    console.log(e.target.id)
   }
-
-  const toggleNavbar = _ => setState({ ...state, navbarIsOpen: !state.navbarIsOpen })
-  const toggleDropdown = _ => setState({...state, dropDownIsOpen: !state.dropDownIsOpen})
 
   return (
     <div className="App">
-      {renderNavbar()}
-      {state.isFetching ? renderLoadAnim() : renderContent()}
+      <Navbar dropdownIsDisabled={state.isFetching} dropdownItems={state.sessions} onClickDropdown={onClickDropdown}></Navbar>
+      {state.isFetching ? renderLoadAnim() : renderSessionView()}
     </div>
   );
 }
