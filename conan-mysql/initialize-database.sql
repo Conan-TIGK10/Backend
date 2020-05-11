@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS `Session` (
 CREATE TABLE IF NOT EXISTS Position (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     sessionId INT NOT NULL,
-    x DOUBLE(9, 6) NOT NULL,
-    y DOUBLE(9, 6) NOT NULL,
+    x DOUBLE(12, 6) NOT NULL,
+    y DOUBLE(12, 6) NOT NULL,
     read_at DATETIME NOT NULL,
     created_at DATETIME,
     rotation INT NOT NULL,
