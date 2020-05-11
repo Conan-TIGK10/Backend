@@ -41,7 +41,7 @@
 
 ```json
 {
-    "positionId": [number required]
+    "positionId": "[number required]"
 }
 ```
 
