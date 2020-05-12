@@ -3,6 +3,7 @@ import Surface from './Drawables/Surface'
 import './Canvas.css'
 import Path from './Drawables/Path'
 import Actor from './Drawables/Actor'
+import Collisions from './Drawables/Collision'
 
 const Canvas = props => {
 
@@ -19,6 +20,11 @@ const Canvas = props => {
     const actor = new Actor({
         color: 'green',
         transforms: props.positions
+    })
+
+    const collisions = new Collisions({
+        color: 'red',
+        data: props.collisions
     })
 
     const rootRef = React.useRef(null)
@@ -43,6 +49,8 @@ const Canvas = props => {
         path.setSurface(surface)
         actor.setStart(surface.getCenter().x, surface.getCenter().y)
         actor.setSurface(surface)
+        collisions.setStart(surface.getCenter().x, surface.getCenter().y)
+        collisions.setSurface(surface)
         surface.draw(ctx.current)
         return () => cancelAnimationFrame(requestRef.current)
     })
@@ -75,6 +83,7 @@ const Canvas = props => {
         calculateTime(time)
         surface.draw(ctx.current, animationTimeRef.current.elapsed)
         path.draw(ctx.current, animationTimeRef.current.elapsed)
+        collisions.draw(ctx.current, animationTimeRef.current.elapsed)
         actor.draw(ctx.current, animationTimeRef.current.elapsed)
         requestRef.current = requestAnimationFrame(animate)
     }

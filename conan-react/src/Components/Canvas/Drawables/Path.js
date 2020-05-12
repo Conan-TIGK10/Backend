@@ -55,7 +55,7 @@ class Path {
                 outOfBounds = true
                 break
             }
-
+            
             // DRAW
             ctx.lineTo(toX, toY)
             ctx.stroke()

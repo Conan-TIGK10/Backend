@@ -14,17 +14,16 @@ const SessionView = props => {
     const [state, setState] = React.useState({
         positions: [],
         collisions: [],
-        duration: null,
-        test: 0
+        duration: null
     })
 
     React.useEffect(_ => {
         fetchData()
-    }, [])
+    }, [props.session])
 
     const fetchData = async _ => {
-        const positionUrl = 'http://3.122.218.59/api/position/' + props.session.id
-        const collisionUrl = 'http://3.122.218.59/api/collision/' + props.session.id
+        const positionUrl = 'http://localhost:8080/position/' + props.session.id
+        const collisionUrl = 'http://localhost:8080/collision/' + props.session.id
 
         const reqConfig = {
             headers: {
@@ -47,12 +46,26 @@ const SessionView = props => {
         const resolvedJsonPromises = await Promise.all(jsonPromises)
 
         const newDuration = calculateDuration(resolvedJsonPromises[0])
+        const collisions = buildCollisionData(resolvedJsonPromises[0], resolvedJsonPromises[1])
 
-        setState({...state, positions: resolvedJsonPromises[0], collisions: resolvedJsonPromises[1], duration: newDuration})
+        setState({...state, positions: resolvedJsonPromises[0], collisions: collisions, duration: newDuration})
     }
 
     const calculateDuration = positions => {
         return (positions[positions.length-1].read_at - positions[0].read_at)/1000 
+    }
+
+    const buildCollisionData = (positions, collisions) => {
+        collisions.forEach(c => {
+            const parentPos = positions.find(p => p.id === c.positionId)
+            if(parentPos) {
+                c.x = parentPos.x
+                c.y = parentPos.y
+                c.read_at = parentPos.read_at
+            }
+        });
+
+        return collisions
     }
 
     return (
@@ -67,7 +80,7 @@ const SessionView = props => {
                 </Jumbotron>
             </div>
             <div className="SessionVisualisation">
-                <Canvas positions={state.positions} controller={canvasController}/>
+                <Canvas positions={state.positions} collisions={state.collisions} controller={canvasController}/>
             </div>
         </div>
     )
