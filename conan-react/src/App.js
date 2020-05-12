@@ -18,7 +18,7 @@ function App() {
   }, [])
 
   const fetchSessions = async _ => {
-    const url = 'http://localhost:8080/session'
+    const url = 'http://3.122.218.59/api/session'
     const reqConfig = {
       headers: {
         'Content-Type': 'application/json'

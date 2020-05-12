@@ -22,8 +22,8 @@ const SessionView = props => {
     }, [props.session])
 
     const fetchData = async _ => {
-        const positionUrl = 'http://localhost:8080/position/' + props.session.id
-        const collisionUrl = 'http://localhost:8080/collision/' + props.session.id
+        const positionUrl = 'http://3.122.218.59/api/position/' + props.session.id
+        const collisionUrl = 'http://3.122.218.59/api/collision/' + props.session.id
 
         const reqConfig = {
             headers: {
