@@ -34,7 +34,7 @@ const Canvas = props => {
     const animationIsRunning = React.useRef(false)
     const animationTimeRef = React.useRef({
         start: null,
-        elapsed: props.controller.time ? props.controller.time : 0
+        elapsed: props.controller.time ? props.controller.time : 0,
     })
 
     React.useEffect(() => {
@@ -73,7 +73,6 @@ const Canvas = props => {
             surface.draw(ctx.current)
             cancelAnimationFrame(requestRef.current)
         } else {
-            props.controller.isPlaying = true
             requestAnimationFrame(animate)
         }
         animationIsRunning.current = !animationIsRunning.current

@@ -2,14 +2,14 @@ import React from 'react'
 import './SessionView.css'
 
 import Canvas from '../Canvas/Canvas'
-import { Jumbotron} from 'reactstrap'
+import { Jumbotron, Button} from 'reactstrap'
 
 const SessionView = props => {
 
-    let canvasController = {
+    const canvasController = React.useRef({
         isPlaying: false,
         time: 0
-    }
+    })
 
     const [state, setState] = React.useState({
         positions: [],
@@ -80,7 +80,7 @@ const SessionView = props => {
                 </Jumbotron>
             </div>
             <div className="SessionVisualisation">
-                <Canvas positions={state.positions} collisions={state.collisions} controller={canvasController}/>
+                <Canvas positions={state.positions} collisions={state.collisions} controller={canvasController.current}/>
             </div>
         </div>
     )
