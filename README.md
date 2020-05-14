@@ -38,6 +38,7 @@
 * [Typescript](https://www.typescriptlang.org/) - A typed Javascript superset.
 * [MySQL](https://www.mysql.com/) - A relational database management system.
 * [React](https://reactjs.org/) - A Javascript library for building user interfaces
+* [TypeScript](https://www.typescriptlang.org/) - Javascript that scales
 ## Documentation
 ### Presentation Layer
 * [Position Routing](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/pl-express/loaders/express/routers/position.md)
