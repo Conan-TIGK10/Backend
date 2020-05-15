@@ -11,8 +11,8 @@ class Collisions {
     draw = (ctx, time) => {
         for(let d of this.data) {
             if(d.read_at <= time) {
-                let x = (d.x*this.surface.scale * this.scaleFactor) + this.startX
-                let y = (d.y*this.surface.scale * this.scaleFactor) + this.startY
+                let x = (d.x*this.surface.scale * this.stepFactor) + this.startX
+                let y = (d.y*this.surface.scale * this.stepFactor) + this.startY
                 Circle.draw(ctx, this.surface.scale*this.scaleFactor, x, y, this.color)
             } else
                 break
