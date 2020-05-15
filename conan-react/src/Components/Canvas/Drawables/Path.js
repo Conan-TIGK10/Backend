@@ -5,6 +5,8 @@ class Path {
         this.startX = props.startX ? props.startX: 0
         this.startY = props.startY ? props.startY: 0
         this.positions = props.positions
+        this.scaleFactor = props.scaleFactor
+        this.stepFactor = props.stepFactor
     }
 
 
@@ -12,7 +14,7 @@ class Path {
         ctx.strokeStyle = this.color
 
         let outOfBounds = false
-        ctx.lineWidth = this.surface.scale / 2
+        ctx.lineWidth = this.scaleFactor * this.surface.scale
         ctx.beginPath()
         ctx.moveTo(this.startX, this.startY)
         
@@ -36,21 +38,16 @@ class Path {
                 let quotaX = deltaX * timeQuota
                 let quotaY = deltaY * timeQuota
 
-                toX += (this.positions[i].x + quotaX) * this.surface.scale
-                toY += (this.positions[i].y + quotaY) * this.surface.scale
+                toX += (this.positions[i].x + quotaX) * this.stepFactor * this.surface.scale
+                toY += (this.positions[i].y + quotaY) * this.stepFactor * this.surface.scale
             } else {
-                toX += this.positions[i+1].x*this.surface.scale
-                toY += this.positions[i+1].y*this.surface.scale
+                toX += this.positions[i+1].x*this.stepFactor * this.surface.scale
+                toY += this.positions[i+1].y*this.stepFactor * this.surface.scale
             }   
               
             // TRACK IF INSIDE
-            const halfSide = this.surface.scale <= 1 ? 0: Math.floor(this.surface.scale/2)
-            const left = toX - halfSide
-            const top = toY - halfSide
-            const right = toX + halfSide
-            const bottom = toY + halfSide
-
-            if(!this.surface.isInside(top, left, right, bottom)) {
+            
+            if(!this.surface.isInside(toX, toY)) {
                 this.surface.scale = Math.floor(this.surface.scale - this.surface.scale/4)
                 outOfBounds = true
                 break

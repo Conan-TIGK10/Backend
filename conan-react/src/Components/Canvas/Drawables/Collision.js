@@ -4,14 +4,16 @@ class Collisions {
         this.color = props.color
         this.startX = props.startX ? props.startX: 0
         this.startY = props.startY ? props.startY: 0
+        this.stepFactor = props.stepFactor
+        this.scaleFactor = props.scaleFactor
     }
 
     draw = (ctx, time) => {
         for(let d of this.data) {
             if(d.read_at <= time) {
-                let x = d.x*this.surface.scale + this.startX
-                let y = d.y*this.surface.scale + this.startY
-                Circle.draw(ctx, this.surface.scale/2, x, y, this.color)
+                let x = (d.x*this.surface.scale * this.scaleFactor) + this.startX
+                let y = (d.y*this.surface.scale * this.scaleFactor) + this.startY
+                Circle.draw(ctx, this.surface.scale*this.scaleFactor, x, y, this.color)
             } else
                 break
         }

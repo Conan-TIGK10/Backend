@@ -15,16 +15,22 @@ const Canvas = props => {
     const path = new Path({
         color: 'white',
         positions: props.positions,
+        scaleFactor: 0.3,
+        stepFactor: 0.3
     })
 
     const actor = new Actor({
         color: 'green',
-        transforms: props.positions
+        transforms: props.positions,
+        scaleFactor: 0.3,
+        stepFactor: 0.3
     })
 
     const collisions = new Collisions({
         color: 'red',
-        data: props.collisions
+        data: props.collisions,
+        scaleFactor: 0.2,
+        stepFactor: 0.3
     })
 
     const rootRef = React.useRef(null)

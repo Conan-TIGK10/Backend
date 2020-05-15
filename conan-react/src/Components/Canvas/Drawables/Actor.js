@@ -5,6 +5,8 @@ class Actor {
         this.startX = props.startX ? props.startX: 0
         this.startY = props.startY ? props.startY: 0
         this.triangle = new Triangle({rotation: 0})
+        this.scaleFactor = props.scaleFactor
+        this.stepFactor = props.stepFactor
     }
 
     draw = (ctx, time) => {
@@ -36,12 +38,14 @@ class Actor {
         let quotaX = deltaX * timeQuota
         let quotaY = deltaY * timeQuota
 
-        toX += (this.transforms[lastPosIndex].x + quotaX) * this.surface.scale
-        toY += (this.transforms[lastPosIndex].y + quotaY) * this.surface.scale
+        toX += (this.transforms[lastPosIndex].x + quotaX) * this.stepFactor * this.surface.scale
+        toY += (this.transforms[lastPosIndex].y + quotaY) * this.stepFactor * this.surface.scale
 
-        //ctx.fillStyle = this.color
-        //ctx.fillRect(toX-(this.surface.scale/2), toY-(this.surface.scale/2), this.surface.scale, this.surface.scale)
-        this.triangle.draw(ctx, {x: toX, y: toY}, this.surface.scale, this.transforms[lastPosIndex].rotation)
+        let deltaRotation = this.transforms[nextPosIndex].rotation - this.transforms[lastPosIndex].rotation
+        let quotaRotation = deltaRotation * timeQuota
+        let rotation = this.transforms[lastPosIndex].rotation + quotaRotation
+
+        this.triangle.draw(ctx, {x: toX, y: toY}, this.scaleFactor*this.surface.scale, rotation +90)
 
     }
 

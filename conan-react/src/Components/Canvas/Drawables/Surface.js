@@ -44,13 +44,11 @@ class Surface {
         }
     }
 
-    isInside = (top, left, right, bottom) => {
-        const topIsInside = top >= 0
-        const leftIsInside = left >= 0
-        const bottomIsInside = bottom <= this.height
-        const rightIsInside = right <= this.width
+    isInside = (x, y) => {
+        const xIsInside = x <= this.width && x >= 0
+        const yIsInside = y <= this.height && y >= 0 
 
-        return (topIsInside && leftIsInside && bottomIsInside && rightIsInside)
+        return (xIsInside && yIsInside)
     }
 
     startScaleDown = time => {

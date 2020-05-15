@@ -46,9 +46,10 @@ const SessionView = props => {
         const resolvedJsonPromises = await Promise.all(jsonPromises)
 
         const newDuration = calculateDuration(resolvedJsonPromises[0])
-        const collisions = buildCollisionData(resolvedJsonPromises[0], resolvedJsonPromises[1])
+        const positions = buildPositionData(resolvedJsonPromises[0])
+        const collisions = buildCollisionData(positions, resolvedJsonPromises[1])
 
-        setState({...state, positions: resolvedJsonPromises[0], collisions: collisions, duration: newDuration})
+        setState({...state, positions: positions, collisions: collisions, duration: newDuration})
     }
 
     const calculateDuration = positions => {
@@ -66,6 +67,30 @@ const SessionView = props => {
         });
 
         return collisions
+    }
+
+    const buildPositionData = (positions) => {
+        let newPositions = []
+        for(let i=0; i<positions.length; i++) {
+            if(i === 0) {
+                newPositions.push({
+                    id: positions[0].id,
+                    read_at: 0,
+                    x: 0,
+                    y: 0,
+                    rotation: positions[0].rotation
+                })
+            } else {
+                newPositions.push({
+                    id: positions[i].id,
+                    read_at: positions[i].read_at - positions[0].read_at,
+                    x: (positions[i].x - positions[0].x)*0.05,
+                    y: (positions[i].y - positions[0].y)*0.05,
+                    rotation: positions[i].rotation
+                })
+            }
+        }
+        return newPositions
     }
 
     return (
