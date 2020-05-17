@@ -2,7 +2,7 @@
 
 ## `errorHandler(errorNumber: number): DALException`
 
-**Description** : Takes an error number and returns a BLLException
+**Description** : Takes an error number and returns a DALException
 
 ### Use:
 
