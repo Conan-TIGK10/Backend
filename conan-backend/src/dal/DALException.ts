@@ -5,7 +5,7 @@ export class DALException extends Error {
     NULL_ER: 2, // MySQL Errno 1048
     DATETIME_FORMAT_ER: 3, // MySQL Errno 1292
     DATATYPE_ER: 4, // MySQL Errno 1265
-    FOREIGN_KEY_CONSTRAINT_ER: 5,
+    FOREIGN_KEY_CONSTRAINT_ER: 5, // MySQL Errno 1452
   };
 
   static errorStrings = {
