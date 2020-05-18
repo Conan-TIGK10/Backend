@@ -18,7 +18,7 @@ const positionArray: any = await selectAll()
 
 ## `async selectBySessionId(): Promise<any>`
 
-**Description** : Selects all positions instances from the MySQL where the id mathces in the database and returns an array.
+**Description** : Selects all positions instances from the MySQL where the id matches in the database and returns an array.
 ### Use:
 ```typescript
 const positionArray: any = await selectBySessionId(id)
