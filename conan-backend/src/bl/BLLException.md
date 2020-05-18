@@ -31,7 +31,7 @@
     REFERENCE_ER: "Associated session id does not exist", // No id matches the reference id provided
   };
 ```
-**errorStatusCodes
+**errorStatusCodes**:
 ```javascript
   static errorStatusCodes = {
     DATABASE_ER: 500, // Error in the database

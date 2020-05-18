@@ -24,6 +24,30 @@ const positionArray: any = await selectAll()
 
 - `BLLException.errorStatusCodes.DATABASE_ER`
 
+## `async selectAllBySessionId(): Promise<any>`
+
+**Description** : Selects all positions instances with the id and returns them in an array.  
+### Use:
+```typescript
+const positionArray: any = await selectAllBySessionId(id)
+```
+
+### Errors
+
+**Possible error types** : 
+* [`BLLException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/bl/BLLException.md)
+
+**Possible errno values**:
+* `BLLException.errorNumbers.DATABASE_ER`
+
+**Possible errorStrings values**:
+
+- `BLLException.errorStrings.DATABASE_ER`
+
+**Possible errorStatusCodes values**:
+
+- `BLLException.errorStatusCodes.DATABASE_ER`
+
 ## `async insert(data: any): Promise<void>`
 
 **Description** : Validates and inserts a position instance.
