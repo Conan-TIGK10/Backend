@@ -37,6 +37,45 @@
     "error": "errorMessage"
 }
 ```
+
+## GET `/position/:sessionId:/`
+
+**Auth required** : No
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+[
+   {
+        "id": 1,
+        "sessionId": 1,
+        "x": 111.111111,
+        "y": 222.222222,
+        "rotation": 50,
+        "read_at": 60000,
+        "created_at": "2020-05-05T07:50:49.000Z"    
+    }
+]
+```
+
+### Error Response
+
+**Condition** : If unexpected server error.
+
+**Code** : `500 Internal Server Error`
+
+**Content** :
+
+```json
+{
+    "error": "errorMessage"
+}
+```
+
 ## POST `/position`
 
 **Auth required** : No
