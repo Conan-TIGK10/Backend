@@ -30,8 +30,8 @@ const positionArray: any = await selectBySessionId(id)
 * [`DALException`](https://github.com/Conan-TIGK10/Backend/blob/development/conan-backend/src/dal/DALException.md)
 
 **Possible errno values**:
-* `DALException.errorNumbers.UNKNOWN
-* `DALExepction.errorStrings.UNKNOWN
+* `DALException.errorNumbers.UNKNOWN`
+* `DALExepction.errorStrings.UNKNOWN`
 
 ## `async insert(data: any): Promise<number>`
 
